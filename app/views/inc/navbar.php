@@ -16,13 +16,13 @@
       <ul class="navbar-nav ml-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/">Daily</a>
+          <a class="nav-link">Daily</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/">Weekly</a>
+          <a class="nav-link">Weekly</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/">Monthly</a>
+          <a class="nav-link">Monthly</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>

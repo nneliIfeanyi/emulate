@@ -93,12 +93,13 @@
     // Update Post
     public function updatePost($data){
       // Prepare Query
-      $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, type = :type WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
-      $this->db->bind(':title', $data['title']);
-      $this->db->bind(':body', $data['body']);
+      $this->db->bind(':amount', $data['amount']);
+      $this->db->bind(':caption', $data['caption']);
+      $this->db->bind(':type', $data['type']);
       
       //Execute
       if($this->db->execute()){

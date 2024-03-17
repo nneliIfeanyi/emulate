@@ -1,17 +1,17 @@
 
 </div>
 <?php if(isset($_SESSION['user_id'])):?>
-<footer class="mt-4 bg-light pt-5 pb-1">
+<footer class="mt-4 bg-dark text-light pt-5 pb-1">
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
-            <h3>Quick Links</h3>
+            <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Daily View</a></li>
-              <li><a href="#">Weekly View</a></li>
-              <li><a href="#">Monthly View</a></li>
-              <li><a href="#">Journal</a></li>
+              <li><a>Home</a></li>
+              <li><a>Daily View</a></li>
+              <li><a>Weekly View</a></li>
+              <li><a>Monthly View</a></li>
+              <li><a>Journal</a></li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -23,7 +23,7 @@
           
         </div>
       </div>
-      <div class="text-center bg-dark text-light p-4">Copyright &copy; <?php echo date('Y');?><a href="#" class="badge"> Stanvic_Concepts</a></div>
+      <div class="text-center border p-4">Copyright &copy; <?php echo date('Y');?><a class="badge"> Stanvic_Concepts</a></div>
     </footer>
   <?php endif;?>
   

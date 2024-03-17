@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row shadow">
   <div class="col-md-6">
+    <h6><?php echo flash('msg');?></h6>
     <div class="row">
       <div class="col-6">
         <h1 class="h5 text-muted">Your Balance:</h1>
@@ -89,39 +90,50 @@
   </div>
 
   <div class="col-md-8">
-    <h6><?php echo flash('msg');?></h6>
     <div class="">
       <table class="table">
         <thead>
           <tr class="border">
-            <th colspan="3"><span class="text-muted">History</span> | <span style="font-style: italic;font-size: 14px;"> current week(<?php echo date('W');?>)</span> | <span class="text-muted"> year 2024</span></th>
+            <th colspan="2"><span class="text-muted">History</span> | <span style="font-style: italic;font-size: 14px;"> current week(<?php echo date('W');?>)</span> | <span class="text-muted"> year 2024</span></th>
           </tr>
         </thead>
         <tbody>
           <?php foreach($data['posts'] as $post) : 
 
             if ($post->type == 'expense') {
-              $post->amount = "<span class='text-danger font-weight-bold'>"."-&#8358;".put_coma($post->amount)."</span>";
+              $post->amount = "<span class='text-danger font-weight-bold'>"."-".put_coma($post->amount)."</span>";
             }else{
-              $post->amount = "<span class='text-success font-weight-bold'>"."+&#8358;".put_coma($post->amount)."</span>";
+              $post->amount = "<span class='text-success font-weight-bold'>"."+".put_coma($post->amount)."</span>";
             }
 
           ?>
           <tr class="border row">
-            <td class="col-3"><p style="font-size:13px;"><?php echo $post->amount ?></p></td>
-            <td class="col-7" style="position: relative;">
+            <!-- First Table data -->
+            <td class="col-3">
+              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+            </td>
+            <!-- Second Table data -->
+            <td class="col-9" style="position: relative;">
+              <!-- Caption div -->
               <div class=""><?php echo $post->caption ?></div>
-              <div style="font-size:11px;position: absolute;top: 0;right: 0;"><p class=" badge bg-dark"><?php echo $post->day.' '. $post->d_num;?></p></div>
-            </td>
-            <td class="col-2">
-              <div class="">
-                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
-                  <button type="submit" class="float-right" style="padding:0;margin: 0;"><i class="fa fa-trash text-danger"></i></button>
-                </form>
-                <p class="float-right mr-2"><i class="fa fa-pencil"></i></p>
+              <!-- Transaction date div -->
+              <div style="font-size:11px;position: absolute;top: 0;left: 0;">
+                <p class=" badge bg-dark"><?php echo $post->day.' '. $post->d_num;?></p>
               </div>
-            </td>
-          </tr>
+              <!-- Delete icon div -->
+              <div style="font-size:11px;position: absolute;top: 0;right: 0;">
+                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
+                  <button type="submit" style="padding:2px;margin: 2px;cursor: pointer;"><i class="fa fa-trash text-danger"></i></button>
+                </form>
+              </div><!-- Delete icon div ends-->
+              <!-- Edit icon div -->
+              <!-- <div style="font-size:11px;position: absolute;bottom: 0;right: 0;">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="padding:2px;margin: 2px;">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </div> --><!-- Edit icon div end -->
+            </td><!-- Second Table data Ends -->
+          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
         </tbody>
       </table>
