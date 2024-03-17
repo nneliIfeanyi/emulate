@@ -1,16 +1,32 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row shadow">
-  <div class="col-md-5">
-    <h1 class="h5 text-muted">Your Balance:</h1>
-    <p class="font-weight-bold">
-     <?php if(empty($data['expense']) AND empty($data['income'])):?>
-     &#8358;0.00
-     <?php else:?>
-     &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
-     <?php endif;?>
-    </p>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-6">
+        <h1 class="h5 text-muted">Your Balance:</h1>
+        <p class="font-weight-bold">
+         <?php if(empty($data['expense']) AND empty($data['income'])):?>
+         &#8358;0.00
+         <?php elseif($data['expense'] > $data['income']):?>
+          <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
+         <?php else:?>
+         &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
+         <?php endif;?>
+        </p>
+      </div>
+      <div class="col-6">
+        <h1 class="h6 text-muted">Tithe:</h1>
+        <p class="">
+         <?php if(empty($data['income'])):?>
+         &#8358;0.00
+         <?php else:?>
+         &#8358;<?= tithe($data['income']) ?>
+         <?php endif;?>
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <div class="row">
       <div class="col-6">
         <h1 class="h6 text-muted">Income:</h1>
@@ -75,8 +91,12 @@
   <div class="col-md-8">
     <h6><?php echo flash('msg');?></h6>
     <div class="">
-      <h5>History</h5>
       <table class="table">
+        <thead>
+          <tr class="border">
+            <th colspan="3"><span class="text-muted">History</span> | <span style="font-style: italic;font-size: 14px;"> current week(<?php echo date('W');?>)</span> | <span class="text-muted"> year 2024</span></th>
+          </tr>
+        </thead>
         <tbody>
           <?php foreach($data['posts'] as $post) : 
 
@@ -87,10 +107,20 @@
             }
 
           ?>
-          <tr class="row">
+          <tr class="border row">
             <td class="col-3"><p style="font-size:13px;"><?php echo $post->amount ?></p></td>
-            <td class="col-7"><?php echo $post->caption ?></td>
-            <td class="col-2"><p class=" badge bg-dark"><?php echo $post->day.' '. $post->d_num;?></p></td>
+            <td class="col-7" style="position: relative;">
+              <div class=""><?php echo $post->caption ?></div>
+              <div style="font-size:11px;position: absolute;top: 0;right: 0;"><p class=" badge bg-dark"><?php echo $post->day.' '. $post->d_num;?></p></div>
+            </td>
+            <td class="col-2">
+              <div class="">
+                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
+                  <button type="submit" class="float-right" style="padding:0;margin: 0;"><i class="fa fa-trash text-danger"></i></button>
+                </form>
+                <p class="float-right mr-2"><i class="fa fa-pencil"></i></p>
+              </div>
+            </td>
           </tr>
           <?php endforeach; ?>
         </tbody>

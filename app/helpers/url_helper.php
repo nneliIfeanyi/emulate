@@ -26,3 +26,9 @@
     }
     return $amount;
   }
+
+
+  function tithe($income){
+    $calc = $income/100*10;
+    echo $calc;
+  }
