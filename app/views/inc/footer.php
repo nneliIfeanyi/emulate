@@ -16,7 +16,7 @@
           </div>
           <div class="col-md-6">
             <h5><?php echo SITENAME?></h5>
-             <p>
+             <p style="font-size: 12px;font-style: italic;">
               Just remember, no matter how easy it is to spend your money, its not getting any easier to make that money.<span class="font-weight-bold"> Spending is Quick Earning is Slow</span>
             </p>
           </div>
