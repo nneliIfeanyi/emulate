@@ -6,19 +6,19 @@
       $this->db = new Database;
     }
 
-    // Get All Posts
-    public function getPosts(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':day', date('jS'));
-      $this->db->bind(':month', date('M'));
-      $this->db->bind(':year', date('Y'));
-      $results = $this->db->resultset();
+    // // Get All Posts 
+    // public function getPosts(){
+    //   $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
+    //   $this->db->bind(':id', $_SESSION['user_id']);
+    //   $this->db->bind(':day', date('jS'));
+    //   $this->db->bind(':month', date('M'));
+    //   $this->db->bind(':year', date('Y'));
+    //   $results = $this->db->resultset();
 
-      return $results;
-    }
+    //   return $results;
+    // }
 
-     // Get All Posts With Limit
+     // Get All Posts for current day
     public function getPostsAll(){
       $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $_SESSION['user_id']);
@@ -30,9 +30,20 @@
       return $results;
     }
 
-     // Get All Posts With Limit
+     // Get All Posts for current week //
     public function getCurrentWeek(){
       $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':week', date('W'));
+      $this->db->bind(':year', date('Y'));
+      $results = $this->db->resultset();
+
+      return $results;
+    }
+
+     // Get last 7 recent Posts for current week //
+    public function getCurrentWeek_7(){
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':week', date('W'));
       $this->db->bind(':year', date('Y'));

@@ -66,17 +66,24 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-3">
+            <td class="col-4">
               <p style="font-size:11px;"><?php echo $post->amount ?></p>
             </td>
             <td class="col-1 fw-bold">
-              <p style="font-size:11px;"><?php echo $post->day.'.' ?></p>
+              <p style="font-size:11px;" class="badge bg-dark"><?php echo $post->day ?></p>
             </td>
             <!-- Second Table data -->
-            <td class="col-8" class="text-center">
+            <td class="col-6" class="text-center">
               <div class="float-end"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
-          
+            <td class="col-1">
+               <!-- Edit icon div -->
+              <div class="float-end">
+                <a style="font-size:11px;" href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>">
+                  Edit
+                </a>
+              </div><!-- Edit icon div end-->
+            </td>
           </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>

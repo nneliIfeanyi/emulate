@@ -80,7 +80,7 @@
       <table class="table">
         <thead>
           <tr class="border">
-            <th colspan="2"><span class="text-muted">History</span> | Today: <span class="text-success"><?php echo date("D, jS F Y");?></span></th>
+            <th colspan="2"><span class="text-muted">History</span></th>
           </tr>
         </thead>
         <tbody>
@@ -115,7 +115,7 @@
           </tbody>
       </table>
       <div class="text-center mt-2 mb-4">
-        <a href="<?php echo URLROOT?>/personal/show">Veiw all transactions for today</a>
+        <a href="<?php echo URLROOT?>/personal/current_week">Veiw all transactions</a>
       </div>
         <?php else:?>
           <div class="my-3 card card-body">

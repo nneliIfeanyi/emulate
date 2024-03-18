@@ -11,9 +11,12 @@
 
     // Load All Posts
     public function index(){
-      $posts = $this->postModel->getPosts();
-      $expense = $this->postModel->getExpense();
-      $income = $this->postModel->getIncome();
+      //$posts = $this->postModel->getPosts();
+      // $expense = $this->postModel->getExpense();
+      // $income = $this->postModel->getIncome();
+      $posts = $this->postModel->getCurrentWeek_7();
+      $expense = $this->postModel->getCurrentWeekExpense();
+      $income = $this->postModel->getCurrentWeekIncome();
 
       $data = [
         'posts' => $posts,
@@ -44,12 +47,16 @@
     // Add Post
     public function add(){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $posts = $this->postModel->getPosts();
+        $posts = $this->postModel->getCurrentWeek_7();
+        $expense = $this->postModel->getCurrentWeekExpense();
+        $income = $this->postModel->getCurrentWeekIncome();
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         $data = [
           'posts' => $posts,
+          'expense' => $expense,
+          'income' => $income,
           'amount' => trim($_POST['amount']),
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
