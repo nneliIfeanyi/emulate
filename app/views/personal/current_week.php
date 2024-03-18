@@ -3,8 +3,22 @@
 
 <div class="row mt-4 mb-3">
   <div class="col-lg-8 mx-auto">
-    <h1 class="h5 mb-3 text-center text-muted">All Daily Transactions For The Current Week<span class="text-success"><?= date('W') ?></span></h1>
+    <h1 class="h6 mb-3 text-center text-muted">All Transactions For The Current Week<span class="text-success"><?= date('W') ?></span></h1>
     <div class="row">
+      <div class="col-6 offset-3">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
+          <h1 class="h6">Balance:</h1>
+          <p class="font-weight-bold">
+           <?php if(empty($data['expense']) AND empty($data['income'])):?>
+           &#8358;0.00
+           <?php elseif($data['expense'] > $data['income']):?>
+            <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
+           <?php else:?>
+           &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
+           <?php endif;?>
+          </p>
+        </div>
+      </div>
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
           <h1 class="h6 text-muted">Income:</h1>
@@ -29,7 +43,7 @@
           </p>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6 offset-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
           <h1 class="h6 text-muted">Tithe:</h1>
           <p class="">
@@ -66,19 +80,26 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-4">
+            <td class="col-4 position-relative" style="position: relative;">
               <p style="font-size:11px;"><?php echo $post->amount ?></p>
+              <p style="font-size:12px;position: absolute;right: 0;top: 0;font-weight: bolder;"><?php echo $post->day ?></p>
             </td>
-            <td class="col-1 fw-bold">
-              <p style="font-size:11px;" class="badge bg-dark"><?php echo $post->day ?></p>
-            </td>
+            <!-- <td class="col-1 fw-bold">
+              
+            </td> -->
             <!-- Second Table data -->
-            <td class="col-6" class="text-center">
-              <div class="float-end" style="font-size:11px;"><?php echo $post->caption ?></div>
+            <td class="col-7" class="text-center">
+              <div class="float-end" style="font-size:12px;"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
-            <td class="col-1">
+            <td class="col-1" style="position: relative;">
+               <!-- Delete icon div -->
+              <div style="position: absolute;right: 0;top: 0;font-weight: bolder;">
+                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
+                  <button type="submit" style="color: red;border: 0;font-size: 15px; padding:0 5px"><span class="fw-bold">&times;</span></button>
+                </form>
+              </div><!-- Delete icon div ends-->
                <!-- Edit icon div -->
-              <div class="float-end">
+              <div style="position: absolute;right: 0;bottom: 0;font-weight: bolder;">
                 <a style="font-size:11px;" href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>">
                   Edit
                 </a>
