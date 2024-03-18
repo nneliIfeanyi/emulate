@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 
-<div class="row mt-4 mb-5">
+<div class="row mt-4 mb-3">
   <div class="col-lg-8 mx-auto">
-    <h1 class="h5 mb-5 text-center text-muted">All Daily Transactions For The Current Week<span class="text-success"><?= date('W') ?></span></h1>
+    <h1 class="h5 mb-3 text-center text-muted">All Daily Transactions For The Current Week<span class="text-success"><?= date('W') ?></span></h1>
     <div class="row">
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
@@ -74,7 +74,7 @@
             </td>
             <!-- Second Table data -->
             <td class="col-6" class="text-center">
-              <div class="float-end"><?php echo $post->caption ?></div>
+              <div class="float-end" style="font-size:11px;"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
                <!-- Edit icon div -->

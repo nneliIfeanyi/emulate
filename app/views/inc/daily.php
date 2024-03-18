@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 
-<div class="row mt-4 mb-5">
+<div class="row mt-4 mb-3">
   <div class="col-lg-7 mx-auto">
-    <h1 class="h5 mb-5 text-center text-muted">Showing Selected Date: <span class="text-primary"><?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?></span></h1>
+    <h1 class="h6 mb-3 text-center text-muted">Showing Selected Date: <span class="text-primary"><?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?></span></h1>
     <div class="row">
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">

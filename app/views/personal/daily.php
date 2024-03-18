@@ -100,7 +100,7 @@
             <!-- Second Table data -->
             <td class="col-8" class="">
               <!-- Caption div -->
-              <div class=""><?php echo $post->caption ?></div>
+              <div style="font-size:11px;"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
                <!-- Edit icon div -->
