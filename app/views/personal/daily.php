@@ -44,7 +44,7 @@
 </div>
 <div class="row">
       <div class="col-lg-7 mx-auto">
-        <h1 class="h2 text-center">All Transactions For Today</h1>
+        <h1 class="h4 text-center">All Transactions For Today</h1>
         <div class="row">
           <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
@@ -127,4 +127,5 @@
 <div class="text-center shadow p-4 mt-5 mb-5 border-start border-4 border-dark rounded-2">
   <a href="<?php echo URLROOT?>/personal/current_week">Veiw All Transactions For Current Week</a>
 </div>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

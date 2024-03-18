@@ -165,6 +165,25 @@
         $year = $_POST['year'];
         $income = 'income';
         $expense = 'expense';
+        if (empty($date)) {
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
+        }elseif (empty($month)) {
+         echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
+        }elseif (empty($year)) {
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
+        }else{
 
         $posts = $this->postModel->getSpecificDate($id, $date, $month, $year);
         $expense = $this->postModel->getExpenseDate($id, $date, $month, $year, $expense);
@@ -180,6 +199,7 @@
         ];
 
       $this->view('inc/daily', $data);
+      }
      }else{
       $date = $this->postModel->getDistinctDate();
       $month = $this->postModel->getDistinctMonth();
