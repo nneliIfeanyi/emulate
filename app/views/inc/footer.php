@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
-            <h5>Quick Links</h5>
+            <h5 class="text-success">Quick Links</h5>
             <ul class="list-unstyled">
               <li><a>Home</a></li>
               <li><a>Daily View</a></li>
@@ -15,7 +15,7 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <h5><?php echo SITENAME?></h5>
+            <h5 class="text-success"><?php echo SITENAME?></h5>
              <p style="font-size: 12px;font-style: italic;">
               Just remember, no matter how easy it is to spend your money, its not getting any easier to make that money.<span class="font-weight-bold"> Spending is Quick Earning is Slow</span>
             </p>
@@ -23,7 +23,7 @@
           
         </div>
       </div>
-      <div class="text-center border p-4">Copyright &copy; <?php echo date('Y');?><a class="badge"> Stanvic_Concepts</a></div>
+      <div class="text-center border-top p-3">Copyright &copy; <?php echo date('Y');?><a class="badge"> Stanvic_Concepts</a></div>
     </footer>
   <?php endif;?>
   

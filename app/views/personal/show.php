@@ -1,17 +1,91 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-  <a href="<?php echo URLROOT; ?>" class="btn btn-light mb-3"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-  <br>
-  <h1><?php echo $data['post']->title; ?></h1>
-  <div class="bg-secondary text-white p-2 mb-3">
-    Written by <?php echo $data['user']->name; ?> on <?php echo $data['post']->created_at; ?>
-  </div>
-  <p><?php echo $data['post']->body; ?></p>
-  <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>
-    <hr>
-    <a class="btn btn-dark" href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>">Edit</a>
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <h1 class="h2">All Transactions For Today</h1>
+        <div class="row">
+          <div class="col-6">
+            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+              <h1 class="h6 text-muted">Income:</h1>
+              <p class="font-weight-light">
+                <?php if(empty($data['income'])):?>
+                &#8358;0.00
+                <?php else:?>
+                &#8358;<?= put_coma($data['income'])?>.00
+                <?php endif;?>
+              </p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+              <h1 class="h6 text-muted">Expense:</h1>
+              <p class="">
+               <?php if(empty($data['expense'])):?>
+               &#8358;0.00
+               <?php else:?>
+               &#8358;<?= put_coma($data['expense'])?>.00
+               <?php endif;?>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <?php if(!empty($data['posts'])):?>
+      <table class="table">
+        <thead>
+          <tr class="border">
+            <th colspan="2"><span class="text-success"><?php echo date("D, jS F Y");?></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($data['posts'] as $post) : 
+              if ($post->type == 'expense') {
+              $post->amount = "<span class='text-danger font-weight-bold'>"."-".put_coma($post->amount)."</span>";
+            }else{
+              $post->amount = "<span class='text-success font-weight-bold'>"."+".put_coma($post->amount)."</span>";
+            }
 
-    <form class="pull-right" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method="post">
-      <input type="submit" class="btn btn-danger" value="Delete">
-    </form>
-  <?php endif; ?>
+          ?>
+          <tr class="border row">
+            <!-- First Table data -->
+            <td class="col-3">
+              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+            </td>
+            <!-- Second Table data -->
+            <td class="col-8" class="">
+              <!-- Caption div -->
+              <div class=""><?php echo $post->caption ?></div>
+            </td><!-- Second Table data Ends -->
+            <td class="col-1">
+               <!-- Edit icon div -->
+              <div class="float-end">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>">
+                  Edit
+                </a>
+              </div><!-- Edit icon div end-->
+            </td>
+          </tr><!-- Second Table row ends -->
+          <?php endforeach; ?>
+          </tbody>
+      </table>
+      
+        <?php else:?>
+          <div class="my-3 card card-body">
+            <div class="card-title">
+              <h6>History</h6>
+            </div>
+            <p class="card-text">No records yet.</p>
+            </div>
+        <?php endif;?>
+    </div>
+  </div>
+    <div class="text-center">
+    <a href="<?php echo URLROOT; ?>" class="btn btn-dark mb-1">
+      <i class="fa fa-backward" aria-hidden="true"></i>
+        Go Back
+      </a>
+    </div>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

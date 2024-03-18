@@ -145,6 +145,7 @@
           if($loggedInUser){
             // User Authenticated!
             $this->createUserSession($loggedInUser);
+            flash('msg', 'Welcome '.$loggedInUser->name);
            
           } else {
             $data['password_err'] = 'Password incorrect.';

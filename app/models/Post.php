@@ -8,19 +8,23 @@
 
     // Get All Posts
     public function getPosts(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week ORDER BY posts.created_at DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
       $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':week', date('W'));
+      $this->db->bind(':day', date('jS'));
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
       $results = $this->db->resultset();
 
       return $results;
     }
 
      // Get All Posts With Limit
-    public function getPosts2(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week ORDER BY posts.created_at DESC LIMIT 2;");
+    public function getPostsAll(){
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':week', date('W'));
+      $this->db->bind(':day', date('jS'));
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
       $results = $this->db->resultset();
 
       return $results;
@@ -28,10 +32,12 @@
 
      // Get sum of Expense
     public function getExpense(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week;");
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':type', 'expense');
-      $this->db->bind(':week', date('W'));
+      $this->db->bind(':day', date('jS'));
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
       //Execute
       $row = $this->db->sumColumn();
 
@@ -40,10 +46,12 @@
 
        // Get sum of income
     public function getIncome(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week;");
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':type', 'income');
-      $this->db->bind(':week', date('W'));
+       $this->db->bind(':day', date('jS'));
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
       //Execute
       $row = $this->db->sumColumn();
 

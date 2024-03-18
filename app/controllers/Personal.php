@@ -26,14 +26,16 @@
       $this->view('personal/index', $data);
     }
 
-    // Show Single Post
-    public function show($id){
-      $post = $this->postModel->getPostById($id);
-      $user = $this->userModel->getUserById($post->user_id);
+    // Show All Daily Post Transaction
+    public function show(){
+      $posts = $this->postModel->getPostsAll();
+      $expense = $this->postModel->getExpense();
+      $income = $this->postModel->getIncome();
 
       $data = [
-        'post' => $post, 
-        'user' => $user
+        'posts' => $posts,
+        'expense' => $expense,
+        'income' => $income, 
       ];
 
       $this->view('personal/show', $data);
