@@ -1,11 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-12">
-    <div class="mb-3">
+    <div class="card card-body mb-3">
       <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
       <form action="<?php echo URLROOT?>/personal/daily" method="POST">
         <div class="row">
-          <div class="col-3 form-group">
+          <div class="col-6 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['day_err'])) ? 'is-invalid' : ''; ?>" name="date">
               <option value="">Date</option>
               <?php foreach($data['date'] as $date):?>
@@ -14,7 +14,7 @@
             </select>
           </div>
 
-        <div class="col-3 form-group">
+        <div class="col-6 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="month">
               <option value="">Month</option>
               <?php foreach($data['month'] as $month):?>
@@ -23,7 +23,7 @@
             </select>
         </div>
 
-        <div class="col-3 form-group">
+        <div class="col-6 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
               <option value="">Year</option>
               <?php foreach($data['year'] as $year):?>
@@ -32,7 +32,7 @@
             </select>
         </div>
 
-        <div class="col-3 form-group">
+        <div class="col-6 col-lg-3 form-group">
           <div class="d-grid">
            <button type="submit" class="myBtn">Navigate</button> 
           </div>
