@@ -64,7 +64,7 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <div class="">
+    <div class="mt-2">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>

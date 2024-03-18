@@ -105,12 +105,11 @@
           'amount' => trim($_POST['amount']),
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
-          'type' => trim($_POST['type']),   
+          'type' => $_POST['type'],   
           'amount_err' => '',
           'caption_err' => '',
-          'type' => ''
+          'type_err' => ''
         ];
-        
         $this->postModel->updatePost($data);
         flash('msg','Edit Successfull');
         redirect('personal');

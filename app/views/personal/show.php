@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
     <div class="row">
       <div class="col-lg-7 mx-auto">
-        <h1 class="h2">All Transactions For Today</h1>
+        <h1 class="h2 text-center">All Transactions For Today</h1>
         <div class="row">
           <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">

@@ -9,7 +9,7 @@
           <div class="form-group">
               <label>Select transaction type:</label>
               <select class="form-control <?php echo (!empty($data['type_err'])) ? 'is-invalid' : ''; ?>" name="type">
-                <option value="<?php echo $data['type']; ?>"><?php echo $data['type']; ?></option>
+                <option value="<?php echo $data['type'];?>"><?php echo $data['type'];?></option>
                 <option value="expense">Expenses</option>
                 <option value="income">Income</option>
               </select>
