@@ -5,13 +5,13 @@
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
-            <h5 class="text-success">Quick Links</h5>
+            <h5 class="">Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a>Home</a></li>
-              <li><a>Daily View</a></li>
-              <li><a>Weekly View</a></li>
-              <li><a>Monthly View</a></li>
-              <li><a>Journal</a></li>
+              <li><a href="<?php echo URLROOT?>">Home</a></li>
+              <li><a href="<?php echo URLROOT?>/personal/daily">Daily View</a></li>
+              <li><a href="<?php echo URLROOT?>/personal/current_week">Weekly View</a></li>
+              <li><a href="<?php echo URLROOT?>/personal/monthly">Monthly View</a></li>
+              <li><a href="<?php echo URLROOT?>/pages/journal">Journal</a></li>
             </ul>
           </div>
           <div class="col-md-6">

@@ -1,7 +1,18 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php if(!empty(flash('msg'))):?>
-  <div class="row"><div class="col-md-6"><?php echo flash('msg');?></div></div>
-<?php endif;?>
+<div class="row">
+  <div class="col-6">
+    <?php if(!empty(flash('msg'))) :?>
+      <p class="font-weight-light">
+      <?php flash('msg');?>
+      </p>
+    <?php endif;?>
+  </div>
+  <div class="col-6" style="overflow: hidden;">
+    <p class="float-end pe-1 mb-3">
+      <?php echo $_SESSION['user_name'];?>
+    </p>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-6">
     <div class="row">
@@ -64,7 +75,7 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <div class="mt-2">
+    <div class="mt-5">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>

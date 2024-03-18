@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
 
   <title><?php echo SITENAME; ?></title>
+  <style type="text/css">
+    .myBtn{
+      padding: 4px 4px;
+      border: none;
+      border-radius: 4%;
+      background: seagreen;
+      color: antiquewhite;
+    }
+  </style>
 </head>
 <body>
   <?php require APPROOT . '/views/inc/navbar.php'; ?>

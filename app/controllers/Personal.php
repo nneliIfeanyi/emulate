@@ -155,6 +155,83 @@
 
 
 
+    // Load Weekly Posts
+    public function daily(){
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $date = $_POST['date'];
+        $month = $_POST['month'];
+        $id = $_SESSION['user_id'];
+        $year = $_POST['year'];
+        $income = 'income';
+        $expense = 'expense';
+
+        $posts = $this->postModel->getSpecificDate($id, $date, $month, $year);
+        $expense = $this->postModel->getExpenseDate($id, $date, $month, $year, $expense);
+        $income = $this->postModel->getIncomeDate($id, $date, $month, $year, $income);
+
+        $data = [
+          'posts' => $posts,
+          'income' => $income,
+          'expense' => $expense,
+          'date' => $date,
+          'month' => $month,
+          'year' => $year
+        ];
+
+      $this->view('inc/daily', $data);
+     }else{
+      $date = $this->postModel->getDistinctDate();
+      $month = $this->postModel->getDistinctMonth();
+      $year = $this->postModel->getDistinctYear();
+      $posts = $this->postModel->getPostsAll();
+      $expense = $this->postModel->getExpense();
+      $income = $this->postModel->getIncome();
+
+      $data = [
+        'date' => $date,
+        'year' => $year,
+        'month' => $month,
+        'posts' => $posts,
+        'expense' => $expense,
+        'income' => $income
+      ];
+      
+      $this->view('personal/daily', $data);
+     }
+    }
+
+
+    // Load current week
+    public function current_week(){
+      $posts = $this->postModel->getCurrentWeek();
+      $expense = $this->postModel->getCurrentWeekExpense();
+      $income = $this->postModel->getCurrentWeekIncome();
+
+      $data = [
+        'posts' => $posts,
+        'expense' => $expense,
+        'income' => $income
+      ];
+      
+      $this->view('personal/current_week', $data);
+    }
+
+     // Load current week
+    public function monthly(){
+      // $posts = $this->postModel->getCurrentWeek();
+      // $expense = $this->postModel->getCurrentWeekExpense();
+      // $income = $this->postModel->getCurrentWeekIncome();
+
+      $data = [
+        // 'posts' => $posts,
+        // 'expense' => $expense,
+        // 'income' => $income
+      ];
+      
+      $this->view('personal/monthly', $data);
+    }
+
 
     
   }
