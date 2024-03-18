@@ -166,18 +166,21 @@
         $income = 'income';
         $expense = 'expense';
         if (empty($date)) {
+          flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
           </script>
           ";
         }elseif (empty($month)) {
+          flash('msg', 'All fields are required..', 'alert alert-danger');
          echo "
           <script type='text/javascript'>
             window.location = window.location.href;
           </script>
           ";
         }elseif (empty($year)) {
+          flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
