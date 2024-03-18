@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-12">
-    <div class="card card-body mb-3">
+    <div class="mb-3">
       <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
       <form action="<?php echo URLROOT?>/personal/daily" method="POST">
         <div class="row">
