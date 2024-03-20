@@ -1,7 +1,7 @@
 
 </div>
 <?php if(isset($_SESSION['user_id'])):?>
-<footer class="mt-4 bg-dark text-light pt-5 pb-1">
+<footer class="footer mt-4 text-bg-dark py-5">
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
@@ -29,4 +29,12 @@
   
 </body>
 <script src="<?php echo URLROOT; ?>/js/bootstrap.bundle.min.js"></script>
+<script>
+  // document.addEventListener('DOMContentLoaded', userScroll);
+    const tooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltip].map((tooltipTrigger) => new bootstrap.Tooltip(tooltipTrigger));
+    //popover
+    const popover = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popover].map((popoverTrigger) => new bootstrap.Popover(popoverTrigger));
+</script>
 </html>

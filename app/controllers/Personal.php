@@ -112,7 +112,8 @@
           'amount' => trim($_POST['amount']),
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
-          'type' => $_POST['type'],   
+          'type' => $_POST['type'],
+          'date' => $_POST['date'],   
           'amount_err' => '',
           'caption_err' => '',
           'type_err' => ''
@@ -124,6 +125,7 @@
       } else {
         // Get post from model
         $post = $this->postModel->getPostById($id);
+        $date = $this->postModel->getDistinctDate();
 
         // Check for owner
         if($post->user_id != $_SESSION['user_id']){
@@ -135,6 +137,10 @@
           'amount' => $post->amount,
           'caption' => $post->caption,
           'type' => $post->type,
+          'day' => $post->day,
+          'd_num' => $post->d_num,
+          'week' => $post->week,
+          'date' => $date,
           'amount_err' => '',
           'caption_err' => '',
           'type_err' => ''

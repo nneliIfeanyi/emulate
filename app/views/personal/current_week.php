@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-6 offset-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
-          <h1 class="h6">Balance:</h1>
+          <p class="h6">Balance:</p>
           <p class="font-weight-bold">
            <?php if(empty($data['expense']) AND empty($data['income'])):?>
            &#8358;0.00
@@ -21,7 +21,7 @@
       </div>
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-          <h1 class="h6 text-muted">Income:</h1>
+          <p class="h6 text-muted">Income:</p>
           <p class="font-weight-light">
             <?php if(empty($data['income'])):?>
             &#8358;0.00
@@ -33,7 +33,7 @@
       </div>
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
-          <h1 class="h6 text-muted">Expense:</h1>
+          <p class="h6 text-muted">Expense:</p>
           <p class="">
            <?php if(empty($data['expense'])):?>
            &#8358;0.00
@@ -45,7 +45,7 @@
       </div>
       <div class="col-6 offset-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
-          <h1 class="h6 text-muted">Tithe:</h1>
+          <p class="h6 text-muted">Tithe:</p>
           <p class="">
            <?php if(empty($data['income'])):?>
            &#8358;0.00

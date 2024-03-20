@@ -13,7 +13,7 @@
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages/journal">Journal</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ms-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
           <a href="<?php echo URLROOT?>/personal/daily" class="nav-link">Daily</a>

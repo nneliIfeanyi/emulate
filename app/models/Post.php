@@ -214,12 +214,13 @@
     // Update Post
     public function updatePost($data){
       // Prepare Query
-      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, type = :type WHERE id = :id');
+      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, d_num = :d_num, type = :type WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':amount', $data['amount']);
       $this->db->bind(':caption', $data['caption']);
+      $this->db->bind(':d_num', $data['d_num']);
       $this->db->bind(':type', $data['type']);
       
       //Execute

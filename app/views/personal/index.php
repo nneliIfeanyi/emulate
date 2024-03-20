@@ -133,7 +133,7 @@
         <h5 class="mb-3">Add Transaction</h5>
         
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">
-          <div class="form-group">
+          <div class="form-group mb-2">
               <label>Select transaction type:</label>
               <select class="form-control <?php echo (!empty($data['type_err'])) ? 'is-invalid' : ''; ?>" name="type">
                 <option value="">---</option>
@@ -142,13 +142,13 @@
               </select>
               <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-2">
               <label>Amount:</label>
               <input type="number" name="amount" class="form-control <?php echo (!empty($data['amount_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['amount']; ?>" placeholder="">
               <span class="invalid-feedback"><?php echo $data['amount_err']; ?></span>
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-3">
               <label>Caption:</label>
               <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
