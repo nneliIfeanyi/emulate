@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-md-6 mx-auto">
-      <div class="card card-body bg-light mb-5">
+      <div class="card card-body bg-light mt-5">
         <h5 class="mb-3">Add Transaction</h5>
         
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">

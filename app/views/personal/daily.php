@@ -125,7 +125,7 @@
         <?php endif;?>
     </div>
   </div>
-<div class="row my-3"><div class="text-center col-lg-6 shadow py-2 border-start border-4 border-dark rounded-2">
+<div class="row my-3"><div class="text-center col-lg-6 shadow py-2 rounded-2">
   <a href="<?php echo URLROOT?>/personal/current_week"><i class="fa fa-eye"></i> Veiw All Transactions For Current Week</a>
 </div>
 <div class="text-center col-lg-6 shadow py-2 rounded-2">

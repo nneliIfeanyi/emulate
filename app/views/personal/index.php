@@ -80,7 +80,7 @@
       <table class="table">
         <thead>
           <tr class="border">
-            <th colspan="2"><span class="text-muted">History</span></th>
+            <th colspan="2"><span class="">History</span></th>
           </tr>
         </thead>
         <tbody>

@@ -143,7 +143,8 @@
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
           'type' => $_POST['type'],
-          'date' => $_POST['date'],   
+          'date' => $_POST['date'],
+          'day' => $_POST['day'],   
           'amount_err' => '',
           'caption_err' => '',
           'type_err' => ''

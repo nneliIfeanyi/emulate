@@ -28,6 +28,7 @@
           <?php if(date('W') == $data['week']):?>
            <div class="col-6 col-lg-3 mb-3 form-group">
             <label>Date: <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Change date"></i></label>
+            <input type="hidden" name="day" value="<?php echo $data['day']">
             <select class="form-control" name="date">
               <option value="<?php echo $data['d_num']; ?>"><?php echo $data['day']. ' '.$data['d_num']; ?></option>
               <?php foreach($data['date'] as $date):?>
