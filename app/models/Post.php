@@ -70,6 +70,14 @@
       $results = $this->db->resultset();
       return $results;
     }
+
+    public function getDistinctDay(){
+      $this->db->query("SELECT DISTINCT(day) FROM posts WHERE user_id = :id;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
      public function getDistinctYear(){
       $this->db->query("SELECT DISTINCT(year) FROM posts WHERE user_id = :id;");
       $this->db->bind(':id', $_SESSION['user_id']);
@@ -214,16 +222,15 @@
     // Update Post
     public function updatePost($data){
       // Prepare Query
-      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, d_num = :d_num, day =:day, type = :type WHERE id = :id');
+      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, type = :type, day = :day, d_num = :d_num WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':amount', $data['amount']);
       $this->db->bind(':caption', $data['caption']);
-      $this->db->bind(':d_num', $data['date']);
-      $this->db->bind(':day', $data['ay']);
-
       $this->db->bind(':type', $data['type']);
+      $this->db->bind(':day', $data['day']);
+      $this->db->bind(':d_num', $data['date']);
       
       //Execute
       if($this->db->execute()){

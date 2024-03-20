@@ -144,7 +144,7 @@
           'user_id' => $_SESSION['user_id'],
           'type' => $_POST['type'],
           'date' => $_POST['date'],
-          'day' => $_POST['day'],   
+          'day' => $_POST['day2'],   
           'amount_err' => '',
           'caption_err' => '',
           'type_err' => ''
@@ -157,6 +157,7 @@
         // Get post from model
         $post = $this->postModel->getPostById($id);
         $date = $this->postModel->getDistinctDate();
+        $day = $this->postModel->getDistinctDay();
 
         // Check for owner
         if($post->user_id != $_SESSION['user_id']){
@@ -170,6 +171,7 @@
           'type' => $post->type,
           'day' => $post->day,
           'd_num' => $post->d_num,
+          'day2' => $day,
           'week' => $post->week,
           'date' => $date,
           'amount_err' => '',

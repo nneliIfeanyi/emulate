@@ -26,16 +26,28 @@
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
           </div>
           <?php if(date('W') == $data['week']):?>
-           <div class="col-6 col-lg-3 mb-3 form-group">
-            <label>Date: <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Change date"></i></label>
-            <input type="hidden" name="day" value="<?php echo $data['day']">
-            <select class="form-control" name="date">
-              <option value="<?php echo $data['d_num']; ?>"><?php echo $data['day']. ' '.$data['d_num']; ?></option>
-              <?php foreach($data['date'] as $date):?>
-              <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
-              <?php endforeach;?>
-            </select>
-          </div>
+            <div class="row">
+               <div class="col-6 col-lg-3 mb-3 form-group">
+                <label>Day: </label>
+                
+                <select class="form-control" name="day2">
+                  <option value="<?php echo $data['day']; ?>"><?php echo $data['day']; ?></option>
+                  <?php foreach($data['day2'] as $day2):?>
+                  <option value="<?php echo $day2->day?>"><?php echo $day2->day?></option>
+                  <?php endforeach;?>
+                </select>
+              </div>
+              <div class="col-6 col-lg-3 mb-3 form-group">
+                <label>Date: </label>
+                
+                <select class="form-control" name="date">
+                  <option value="<?php echo $data['d_num']; ?>"><?php echo $data['d_num']; ?></option>
+                  <?php foreach($data['date'] as $date):?>
+                  <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
+                  <?php endforeach;?>
+                </select>
+              </div>
+            </div>
           <?php endif;?>
           <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Edit</button>
           <a onclick="history.back()" class="btn btn-light float-end"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
