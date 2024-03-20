@@ -120,4 +120,8 @@
         <?php endif;?>
     </div>
   </div>
+
+  <div class="text-center mt-2 mb-4">
+    <a href="<?php echo URLROOT?>/personal/add" class="btn btn-sm"><i class="fa fa-plus"></i> Add Transaction</a>
+  </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

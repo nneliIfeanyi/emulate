@@ -73,14 +73,32 @@
 
          // Validate 
         if(empty($data['type'])){
-            $data['type_err'] = 'Please select transaction type';
-            $this->view('personal/index', $data);
+            // $data['type_err'] = 'Please select transaction type';
+            // $this->view('personal/index', $data);
+          flash('msg', 'All fields are required..', 'alert alert-danger');
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
         }elseif(empty($data['amount'])){
-            $data['amount_err'] = 'Please enter amount';
-            $this->view('personal/index', $data);
+            // $data['amount_err'] = 'Please enter amount';
+            // $this->view('personal/index', $data);
+            flash('msg', 'All fields are required..', 'alert alert-danger');
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
         }elseif(empty($data['caption'])){
-            $data['caption_err'] = 'Briefly describe transaction';
-            $this->view('personal/index', $data);
+            // $data['caption_err'] = 'Briefly describe transaction';
+            // $this->view('personal/index', $data);
+          flash('msg', 'All fields are required..', 'alert alert-danger');
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
         }elseif($data['type'] == 'expense') {
             $this->postModel->addPost($data);
             flash('msg', 'Transaction Added', 'alert alert-danger');
@@ -97,7 +115,19 @@
 
       }//Post request method ends..
        else {
-        redirect('personal');
+        $posts = $this->postModel->getCurrentWeek_7();
+        $expense = $this->postModel->getCurrentWeekExpense();
+        $income = $this->postModel->getCurrentWeekIncome();
+
+        $data = [
+          'posts' => $posts,
+          'expense' => $expense,
+          'income' => $income,
+          'amount' => '',
+          'caption' => ''
+        ];
+      
+      $this->view('personal/add', $data);
       }
     }//Add post function ends..
 

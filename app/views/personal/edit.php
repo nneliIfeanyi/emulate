@@ -1,5 +1,4 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<a href="<?php echo URLROOT; ?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
 <div class="row">
   <div class="col-lg-7 mx-auto">
       <div class="card card-body bg-light my-5">
@@ -38,6 +37,7 @@
           </div>
           <?php endif;?>
           <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Edit</button>
+          <a onclick="history.back()" class="btn btn-light float-end"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
         </form>
       </div>
     </div>
