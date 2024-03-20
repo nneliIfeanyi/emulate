@@ -220,7 +220,7 @@
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':amount', $data['amount']);
       $this->db->bind(':caption', $data['caption']);
-      $this->db->bind(':d_num', $data['d_num']);
+      $this->db->bind(':d_num', $data['date']);
       $this->db->bind(':type', $data['type']);
       
       //Execute
