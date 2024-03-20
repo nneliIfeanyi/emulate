@@ -1,7 +1,7 @@
 
 </div>
 <?php if(isset($_SESSION['user_id'])):?>
-<footer class="footer mt-4 text-bg-dark py-5">
+<footer class="footer mt-4 text-bg-dark">
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
