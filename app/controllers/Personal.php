@@ -31,14 +31,10 @@
 
     // Show All Daily Post Transaction
     public function show(){
-      $posts = $this->postModel->getPostsAll();
-      $expense = $this->postModel->getExpense();
-      $income = $this->postModel->getIncome();
+      $posts = $this->postModel->getCurrentWeek();
 
       $data = [
-        'posts' => $posts,
-        'expense' => $expense,
-        'income' => $income, 
+        'posts' => $posts
       ];
 
       $this->view('personal/show', $data);

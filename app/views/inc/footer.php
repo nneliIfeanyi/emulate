@@ -1,7 +1,7 @@
 
 </div>
 <?php if(isset($_SESSION['user_id'])):?>
-<footer class="footer mt-4 text-bg-dark">
+<footer class="footer mt-4 text-bg-dark pt-4">
       <div class="container">
         <div class="row">
         	<div class="col-md-6">
@@ -29,6 +29,7 @@
   
 </body>
 <script src="<?php echo URLROOT; ?>/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo URLROOT; ?>/js/script.js"></script>
 <script>
   // document.addEventListener('DOMContentLoaded', userScroll);
     const tooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]');

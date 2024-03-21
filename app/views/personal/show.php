@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-7 mx-auto">
         <h1 class="h2 text-center">All Transactions For Today</h1>
         <div class="row">
@@ -29,14 +29,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   <div class="row">
     <div class="col-lg-10 mx-auto">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>
-          <tr class="border">
-            <th colspan="2"><span class="text-success"><?php echo date("D, jS F Y");?></span></th>
+          <tr class="border text-center">
+            <th colspan="2">All Transactions</th>
           </tr>
         </thead>
         <tbody>
@@ -50,13 +50,14 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+            <td class="col-4 position-relative" style="position: relative;">
+              <p style="font-size:11px;"><?php echo $post->amount ?></p>
+              <p style="font-size:12px;position: absolute;right: 0;top: 0;font-weight: bolder;"><?php echo $post->day ?></p>
             </td>
             <!-- Second Table data -->
-            <td class="col-8" class="">
+            <td class="col-7">
               <!-- Caption div -->
-              <div class=""><?php echo $post->caption ?></div>
+              <div style="font-size:13px;" class="float-end"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
                <!-- Edit icon div -->

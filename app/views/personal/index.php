@@ -115,7 +115,7 @@
           </tbody>
       </table>
       <div class="text-center mt-2 mb-4">
-        <a href="<?php echo URLROOT?>/personal/current_week">Veiw all transactions</a>
+        <a href="<?php echo URLROOT?>/personal/show">Veiw all transactions</a>
       </div>
         <?php else:?>
           <div class="my-3 card card-body">
