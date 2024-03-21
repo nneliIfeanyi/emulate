@@ -76,7 +76,7 @@
             <h1 class="display-2 text-white mt-3">
               Monitor your income and expenditure with ease.
             </h1>
-            <p class="lead w-75 m-auto p-5 mb-3" style="color: antiquewhite;">
+            <p class="lead w-75 m-auto p-3 mb-3" style="color: antiquewhite;">
               Keep track of your financial flow, know how much you spent and how much you made. Only what you record, would be recorded.
             </p>
             <a href="<?php echo URLROOT?>/users/login" class="btn btn-success text-uppercase">

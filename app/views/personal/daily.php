@@ -17,7 +17,7 @@
 
         <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="month">
-              <option value="">Month</option>
+              <option value="<?php echo date('M')?>"><?php echo date('M')?></option>
               <?php foreach($data['month'] as $month):?>
               <option value="<?php echo $month->month?>"><?php echo $month->month?></option>
               <?php endforeach;?>
@@ -26,7 +26,7 @@
 
         <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
-              <option value="">Year</option>
+              <option value="<?php echo date('Y')?>"><?php echo date('Y')?></option>
               <?php foreach($data['year'] as $year):?>
               <option value="<?php echo $year->year?>"><?php echo $year->year?></option>
               <?php endforeach;?>
