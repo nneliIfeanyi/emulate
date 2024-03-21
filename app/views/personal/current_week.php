@@ -61,11 +61,11 @@
 
 
 <div class="row">
-    <div class="col-lg-10 mx-auto mb-5">
+    <div class="col-lg-10 mx-auto mb-3">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>
-          <tr class="border">
+          <tr class="border text-center">
             <th colspan="2"><span class="text-success">Transaction Records For Current Week<span class="text-dark text-muted"><?php echo date('W'); ?></span></span></th>
           </tr>
         </thead>
@@ -121,7 +121,40 @@
     </div>
   </div>
 
-  <div class="text-center mt-2 mb-4">
-    <a href="<?php echo URLROOT?>/personal/add" class="btn btn-sm"><i class="fa fa-plus"></i> Add Transaction</a>
+  <div class="row">
+  <div class="col-12">
+    <div class="card card-body mb-3">
+      <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous week</span></h4>
+      <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
+      <form action="<?php echo URLROOT?>/personal/current_week" method="POST">
+        <div class="row">
+
+        <div class="col-6 py-2 col-lg-4 form-group">
+            <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="week">
+              <option value="<?php echo date('W') ?>">Week <?php echo date('W') ?></option>
+              <?php foreach($data['week'] as $week):?>
+              <option value="<?php echo $week->week?>"><?php echo $week->week?></option>
+              <?php endforeach;?>
+            </select>
+        </div>
+
+        <div class="col-6 py-2 col-lg-4 form-group">
+            <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
+              <option value="<?php echo date('Y')?>">Year <?php echo date('Y')?></option>
+              <?php foreach($data['year'] as $year):?>
+              <option value="<?php echo $year->year?>"><?php echo $year->year?></option>
+              <?php endforeach;?>
+            </select>
+        </div>
+
+        <div class="col-6 col-lg-4 form-group">
+          <div class="d-grid">
+           <button type="submit" class="btn btn-success">Navigate</button> 
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
   </div>
+</div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

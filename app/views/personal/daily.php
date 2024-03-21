@@ -6,7 +6,7 @@
       <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
       <form action="<?php echo URLROOT?>/personal/daily" method="POST">
         <div class="row">
-          <div class="col-6 col-lg-3 form-group">
+          <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['day_err'])) ? 'is-invalid' : ''; ?>" name="date">
               <option value="">Date</option>
               <?php foreach($data['date'] as $date):?>
@@ -15,7 +15,7 @@
             </select>
           </div>
 
-        <div class="col-6 col-lg-3 form-group">
+        <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="month">
               <option value="">Month</option>
               <?php foreach($data['month'] as $month):?>
@@ -24,7 +24,7 @@
             </select>
         </div>
 
-        <div class="col-6 col-lg-3 form-group">
+        <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
               <option value="">Year</option>
               <?php foreach($data['year'] as $year):?>
@@ -35,7 +35,7 @@
 
         <div class="col-6 col-lg-3 form-group">
           <div class="d-grid">
-           <button type="submit" class="myBtn">Navigate</button> 
+           <button type="submit" class="btn btn-success">Navigate</button> 
           </div>
         </div>
       </div>
@@ -125,11 +125,17 @@
         <?php endif;?>
     </div>
   </div>
-<div class="row my-3"><div class="text-center col-lg-6 shadow py-2 rounded-2">
-  <a href="<?php echo URLROOT?>/personal/current_week"><i class="fa fa-eye"></i> Veiw All Transactions For Current Week</a>
+<div class="row my-3">
+  <div class="text-center col-lg-6 shadow py-2 rounded-2">
+    <a href="<?php echo URLROOT?>/personal/current_week">
+      <i class="fa fa-eye"></i> Veiw All Transactions For Current Week
+    </a>
+  </div>
+  <div class="text-center col-lg-6 shadow py-2 rounded-2">
+    <a href="<?php echo URLROOT?>/personal/add">
+      <i class="fa fa-plus"></i> Add Transaction
+    </a>
+  </div>
 </div>
-<div class="text-center col-lg-6 shadow py-2 rounded-2">
-  <a href="<?php echo URLROOT?>/personal/add"><i class="fa fa-plus"></i> Add Transaction</a>
-</div></div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

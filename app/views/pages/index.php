@@ -76,15 +76,86 @@
             <h1 class="display-2 text-white mt-3">
               Monitor your income and expenditure with ease.
             </h1>
-            <p class="lead text-success w-75 m-auto mb-4">
+            <p class="lead w-75 m-auto p-5 mb-3" style="color: antiquewhite;">
               Keep track of your financial flow, know how much you spent and how much you made. Only what you record, would be recorded.
             </p>
-            <a href="<?php echo URLROOT?>/users/login" class="btn btn-primary text-uppercase">
+            <a href="<?php echo URLROOT?>/users/login" class="btn btn-success text-uppercase">
               Begin now
             </a>
             <!-- <a href="#discover" class="btn btn-outline-light text-uppercase">
               Discover
             </a> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 py-3">
+            <!-- Image Slider -->
+            <div id="slider" class="carousel slide" data-bs-ride="carousel">
+              <!-- <div class="carousel-indicators">
+                <button
+                  class="active"
+                  type="button"
+                  data-bs-slide-to="0"
+                  data-bs-target="#slider"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-slide-to="1"
+                  data-bs-target="#slider"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-slide-to="2"
+                  data-bs-target="#slider"
+                  aria-label="Slide 3"
+                ></button>
+              </div> -->
+              <div class="carousel-inner rounded-5">
+                <!-- <div class="carousel-item active">
+                  <img
+                    src="images/img1.png"
+                    alt=""
+                    class="d-block w-100 rounded-5"
+                  />
+                </div> -->
+                <div class="carousel-item active">
+                  <img
+                    src="images/img3.png"
+                    alt=""
+                    class="d-block w-100 rounded-5"
+                  />
+                </div>
+                <!-- <div class="carousel-item">
+                  <img
+                    src="images/img.jpg"
+                    alt=""
+                    class="d-block w-100 rounded-5"
+                  />
+                </div> -->
+              </div>
+              <!-- Buttons -->
+              <!-- <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-slide="prev"
+                data-bs-target="#slider"
+              >
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-slide="next"
+                data-bs-target="#slider"
+              >
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+              </button> -->
+            </div>
           </div>
         </div>
       </div>

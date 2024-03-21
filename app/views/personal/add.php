@@ -1,19 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row">
-  <div class="col-md-6 mx-auto">
-    <?php if(!empty(flash('msg'))) :?>
-      <p class="font-weight-light">
-      <?php flash('msg');?>
-      </p>
-    <?php endif;?>
-  </div>
-</div>
 
 <div class="row">
     <div class="col-md-6 mx-auto">
-      <div class="card card-body bg-light mt-5">
+      <div class="card card-body bg-light mt-3">
         <h5 class="mb-3">Add Transaction</h5>
-        
+        <?php flash('msg');?>
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">
           <div class="form-group mb-2">
               <label>Select transaction type:</label>
@@ -44,6 +35,6 @@
   <a style="cursor: pointer;" onclick="history.back()"><i class="fa fa-backward"></i> Back</a>
 </div>
 <div class="text-center col-lg-6 shadow-sm py-2 rounded-2">
-  <a href="<?php echo URLROOT?>/personal/add"><i class="fa fa-eye"></i> View Today</a>
+  <a href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-eye"></i> View Today</a>
 </div></div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

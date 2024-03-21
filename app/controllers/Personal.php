@@ -31,7 +31,7 @@
 
     // Show All Daily Post Transaction
     public function show(){
-      $posts = $this->postModel->getCurrentWeek();
+      $posts = $this->postModel->getPosts();
 
       $data = [
         'posts' => $posts
@@ -43,16 +43,16 @@
     // Add Post
     public function add(){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $posts = $this->postModel->getCurrentWeek_7();
-        $expense = $this->postModel->getCurrentWeekExpense();
-        $income = $this->postModel->getCurrentWeekIncome();
+        // $posts = $this->postModel->getCurrentWeek_7();
+        // $expense = $this->postModel->getCurrentWeekExpense();
+        // $income = $this->postModel->getCurrentWeekIncome();
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         $data = [
-          'posts' => $posts,
-          'expense' => $expense,
-          'income' => $income,
+          // 'posts' => $posts,
+          // 'expense' => $expense,
+          // 'income' => $income,
           'amount' => trim($_POST['amount']),
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
@@ -111,14 +111,14 @@
 
       }//Post request method ends..
        else {
-        $posts = $this->postModel->getCurrentWeek_7();
-        $expense = $this->postModel->getCurrentWeekExpense();
-        $income = $this->postModel->getCurrentWeekIncome();
+        // $posts = $this->postModel->getCurrentWeek_7();
+        // $expense = $this->postModel->getCurrentWeekExpense();
+        // $income = $this->postModel->getCurrentWeekIncome();
 
         $data = [
-          'posts' => $posts,
-          'expense' => $expense,
-          'income' => $income,
+          // 'posts' => $posts,
+          // 'expense' => $expense,
+          // 'income' => $income,
           'amount' => '',
           'caption' => ''
         ];
@@ -269,17 +269,54 @@
 
     // Load current week
     public function current_week(){
-      $posts = $this->postModel->getCurrentWeek();
-      $expense = $this->postModel->getCurrentWeekExpense();
-      $income = $this->postModel->getCurrentWeekIncome();
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $week = $_POST['week'];
+        $id = $_SESSION['user_id'];
+        $year = $_POST['year'];
+        $income = 'income';
+        $expense = 'expense';
+        if (empty($week)) {
+          flash('msg', 'All fields are required..', 'alert alert-danger');
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
+        }else{
 
-      $data = [
-        'posts' => $posts,
-        'expense' => $expense,
-        'income' => $income
-      ];
-      
-      $this->view('personal/current_week', $data);
+        $posts = $this->postModel->getSpecificWeek($id, $week, $year);
+        $expense = $this->postModel->getExpenseWeek($id, $week, $year, $expense);
+        $income = $this->postModel->getIncomeWeek($id, $week, $year, $income);
+
+        $data = [
+          'posts' => $posts,
+          'income' => $income,
+          'expense' => $expense,
+          'week' => $week,
+          'year' => $year
+        ];
+
+      $this->view('inc/week', $data);
+      }
+      }else{
+        $posts = $this->postModel->getCurrentWeek();
+        $expense = $this->postModel->getCurrentWeekExpense();
+        $income = $this->postModel->getCurrentWeekIncome();
+
+        $week = $this->postModel->getDistinctWeek();
+        $year = $this->postModel->getDistinctYear();
+
+        $data = [
+          'posts' => $posts,
+          'expense' => $expense,
+          'income' => $income,
+          'week' => $week,
+          'year' => $year
+        ];
+        
+        $this->view('personal/current_week', $data);
+      }
     }
 
      // Load current week

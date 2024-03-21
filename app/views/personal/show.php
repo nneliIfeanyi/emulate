@@ -57,7 +57,7 @@
             <!-- Second Table data -->
             <td class="col-7">
               <!-- Caption div -->
-              <div style="font-size:13px;" class="float-end"><?php echo $post->caption ?></div>
+              <div style="font-size:13px;" class="float-end pe-1"><?php echo $post->caption ?></div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
                <!-- Edit icon div -->
@@ -83,7 +83,7 @@
     </div>
   </div>
     <div class="text-center">
-    <a href="<?php echo URLROOT; ?>" class="btn btn-dark mb-1">
+    <a href="<?php echo URLROOT; ?>" class="btn">
       <i class="fa fa-backward" aria-hidden="true"></i>
         Go Back
       </a>
