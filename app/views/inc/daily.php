@@ -34,7 +34,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-10 mx-auto mb-5">
+    <div class="col-lg-10 mx-auto mb-3">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>
@@ -77,7 +77,7 @@
     </div>
   </div>
 
-   <div class="text-center mt-2 mb-4">
-    <a class=" btn myBtn" href="<?php echo URLROOT?>/personal/daily">Return</a>
+  <div class="text-center mb-4">
+    <a class=" btn btn-success" href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-backward"></i> Return to current date</a>
   </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

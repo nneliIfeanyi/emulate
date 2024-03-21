@@ -78,6 +78,6 @@
   </div>
 
    <div class="text-center mb-4">
-    <a class=" btn btn-success" href="<?php echo URLROOT?>/personal/current_week"><i class="fa fa-backward"></i> Return</a>
+    <a class=" btn btn-success" href="<?php echo URLROOT?>/personal/current_week"><i class="fa fa-backward"></i> Return to current week</a>
   </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
