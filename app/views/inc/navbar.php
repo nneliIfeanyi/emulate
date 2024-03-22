@@ -15,6 +15,9 @@
       </ul>
       <ul class="navbar-nav ms-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
+         <li class="nav-item">
+          <a href="<?php echo URLROOT?>/personal/add" class="nav-link">Add</a>
+        </li>
         <li class="nav-item">
           <a href="<?php echo URLROOT?>/personal/daily" class="nav-link">Daily</a>
         </li>
