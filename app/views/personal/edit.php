@@ -55,6 +55,17 @@
                   <?php endforeach;?>
                 </select>
               </div>
+
+              <div class="col-6 col-lg-3 mb-3 form-group">
+                <label>Date: </label>
+                
+                <select class="form-control" name="week2">
+                  <option value="<?php echo $data['week']; ?>"><?php echo $data['week']; ?></option>
+                  <?php foreach($data['week2'] as $date):?>
+                  <option value="<?php echo $date->week?>"><?php echo $date->week?></option>
+                  <?php endforeach;?>
+                </select>
+              </div>
             </div>
           
           <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Edit</button>

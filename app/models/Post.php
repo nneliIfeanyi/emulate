@@ -365,7 +365,7 @@
     // Update Post
     public function updatePost($data){
       // Prepare Query
-      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, type = :type, day = :day, d_num = :d_num WHERE id = :id');
+      $this->db->query('UPDATE posts SET amount = :amount, caption = :caption, type = :type, day = :day, d_num = :d_num, week = :week WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
@@ -374,6 +374,7 @@
       $this->db->bind(':type', $data['type']);
       $this->db->bind(':day', $data['day']);
       $this->db->bind(':d_num', $data['date']);
+      $this->db->bind(':week', $data['week']);
       
       //Execute
       if($this->db->execute()){

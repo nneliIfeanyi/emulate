@@ -67,7 +67,7 @@
               <!-- Caption div -->
               <div class="float-end">
                 <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" 
-                   style="text-decoration: none; color: black;">
+                   style="text-decoration: none; color: black;font-size: 13px;">
                    <?php echo $post->caption ?>
                 </a>
               </div>
