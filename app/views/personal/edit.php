@@ -33,7 +33,7 @@
               <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
           </div>
-          <?php if(date('W') == $data['week']):?>
+          
             <div class="row">
                <div class="col-6 col-lg-3 mb-3 form-group">
                 <label>Day: </label>
@@ -56,7 +56,7 @@
                 </select>
               </div>
             </div>
-          <?php endif;?>
+          
           <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Edit</button>
           <a onclick="history.back()" class="btn btn-light float-end"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
         </form>
