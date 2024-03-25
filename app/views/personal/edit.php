@@ -30,7 +30,7 @@
 
           <div class="form-group mb-3">
               <label>Caption:</label>
-              <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"></textarea>
+              <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
           </div>
           <?php if(date('W') == $data['week']):?>

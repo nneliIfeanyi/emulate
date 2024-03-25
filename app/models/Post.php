@@ -8,7 +8,7 @@
 
     // // Get All Posts 
     public function getPosts(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id  ORDER BY posts.week DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id  ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
       return $results;
@@ -16,7 +16,7 @@
 
      // Get All Posts for current day
     public function getPostsAll(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.week DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':day', date('jS'));
       $this->db->bind(':month', date('M'));
@@ -28,7 +28,7 @@
 
      // Get All Posts for current week //
     public function getCurrentWeek(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.week DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':week', date('W'));
       $this->db->bind(':year', date('Y'));
@@ -39,7 +39,7 @@
 
      // Get last 7 recent Posts for current week //
     public function getCurrentWeek_LM7(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.week DESC LIMIT 7;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':week', date('W'));
       $this->db->bind(':year', date('Y'));
@@ -83,7 +83,7 @@
 
      // Fetch specific date
     public function getSpecificDate($id, $date, $month, $year){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.week DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $id);
       $this->db->bind(':day', $date);
       $this->db->bind(':month', $month);
@@ -94,7 +94,7 @@
     }
      // Fetch specific week
     public function getSpecificWeek($id, $week, $year){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.week DESC;");
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC;");
       $this->db->bind(':id', $id);
       $this->db->bind(':week', $week);
       $this->db->bind(':year', $year);

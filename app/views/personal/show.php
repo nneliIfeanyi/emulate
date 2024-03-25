@@ -49,15 +49,30 @@
 
           ?>
           <tr class="border row">
+
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?> " style="text-decoration: none;"><?php echo $post->amount ?></a></p>
+            <td class="col-3" style="position: relative;">
+              <p style="font-size:13px;">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" 
+                   style="text-decoration: none;">
+                  <?php echo $post->amount ?>
+                </a>
+              </p>
+              <p style="font-size:7px;position: absolute;right: 0;top: 0;font-weight: bolder;">    <?php echo $post->day.'-'.$post->d_num ?>
+              </p>
             </td>
+
             <!-- Second Table data -->
             <td class="col-8" class="">
               <!-- Caption div -->
-              <div class="float-end"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;"><?php echo $post->caption ?></a></div>
+              <div class="float-end">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" 
+                   style="text-decoration: none; color: black;">
+                   <?php echo $post->caption ?>
+                </a>
+              </div>
             </td><!-- Second Table data Ends -->
+
             <td class="col-1">
                <!-- Delete icon div -->
               <div class="float-end">

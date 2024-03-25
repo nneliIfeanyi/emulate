@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
           <h1 class="h6 text-muted">Asset:</h1>
           <p class="">
            <?php if(empty($data['investment'])):?>
@@ -141,12 +141,16 @@
           <tr class="border row">
             <!-- First Table data -->
             <td class="col-3">
-              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>"><?php echo $post->amount ?></a></p>
+              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none;"><?php echo $post->amount ?></a></p>
             </td>
             <!-- Second Table data -->
             <td class="col-8" class="">
               <!-- Caption div -->
-              <div class=""><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>"><?php echo $post->caption ?></a></div>
+              <div class="float-end">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;">
+                  <?php echo $post->caption ?>
+                </a>
+              </div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
                <!-- Delete icon div -->

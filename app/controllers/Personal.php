@@ -74,7 +74,7 @@
         if(empty($data['type'])){
             // $data['type_err'] = 'Please select transaction type';
             // $this->view('personal/index', $data);
-          flash('msg', 'Transaction type and amount are required..', 'alert alert-danger');
+          flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
@@ -83,17 +83,19 @@
         }elseif(empty($data['amount'])){
             // $data['amount_err'] = 'Please enter amount';
             // $this->view('personal/index', $data);
-            flash('msg', 'Transaction type and amount are required..', 'alert alert-danger');
+            flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
           </script>
           ";
         }elseif(empty($data['caption'])){
-            $data['caption'] = $data['type'];
-            $this->postModel->addPost($data);
-            flash('msg', 'Transaction Added');
-            redirect('personal');
+          flash('msg', 'All fields are required..', 'alert alert-danger');
+          echo "
+          <script type='text/javascript'>
+            window.location = window.location.href;
+          </script>
+          ";
         }elseif($data['type'] == 'expense') {
             $this->postModel->addPost($data);
             flash('msg', 'Transaction Added', 'alert alert-danger');
