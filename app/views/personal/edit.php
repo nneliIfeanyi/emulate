@@ -8,7 +8,7 @@
             <?php flash('msg');?>
             </p>
           <?php endif;?>
-        <p>Change the details of this transaction</p>
+        <p data-bs-toggle="tooltip" data-bs-title="Hello there">Change the details of this transaction</p>
         <form action="<?php echo URLROOT; ?>/personal/edit/<?php echo $data['id']; ?>" method="post">
           <div class="form-group mb-3">
               <label>Select transaction type:</label>
@@ -16,9 +16,6 @@
                 <option value="<?php echo $data['type'];?>"><?php echo $data['type'];?></option>
                 <option value="expense">Expenses</option>
                 <option value="income">Income</option>
-                 <option value="savings">Savings</option>
-                <option value="investment">Investment</option>
-                <option value="charity">Charity</option>
               </select>
               <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
           </div>

@@ -53,15 +53,19 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+            <td class="col-4">
+              <p style="font-size:13px;">
+                <?php echo $post->amount ?>
+              </p>
             </td>
             <!-- Second Table data -->
-            <td class="col-8" class="text-center">
-              <div class="float-end"><?php echo $post->caption ?></div>
+            <td class="col-8" class="">
+              <!-- Caption div -->
+              <div class="float-end">
+                  <p style="font-size:13px;"><?php echo $post->caption ?></p>
+              </div>
             </td><!-- Second Table data Ends -->
-          
-          </tr><!-- Second Table row ends -->
+         </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
       </table>

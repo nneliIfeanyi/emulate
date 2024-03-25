@@ -2,10 +2,10 @@
 
 
 <div class="row mt-4 mb-3">
-  <div class="col-lg-8 mx-auto">
+  <div class="col-lg-12 mx-auto">
     <h1 class="h6 mb-3 text-center text-muted">All Transactions For The Current Week<span class="text-success"><?= date('W') ?></span></h1>
     <div class="row">
-      <div class="col-6 offset-3">
+      <div class="col-6 col-lg-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
           <p class="h6">Balance:</p>
           <p class="font-weight-bold">
@@ -19,7 +19,7 @@
           </p>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-lg-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
           <p class="h6 text-muted">Income:</p>
           <p class="font-weight-light">
@@ -31,7 +31,7 @@
           </p>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-lg-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
           <p class="h6 text-muted">Expense:</p>
           <p class="">
@@ -43,7 +43,7 @@
           </p>
         </div>
       </div>
-      <div class="col-6 offset-3">
+      <div class="col-6 col-lg-3">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
           <p class="h6 text-muted">Tithe:</p>
           <p class="">

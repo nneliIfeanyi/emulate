@@ -5,7 +5,7 @@
   <div class="col-12 text-center">
     <h1 class="h6 mb-3 text-center text-muted">Showing Selected Date: <span class="text-primary"><?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?></span></h1>
     <div class="row">
-          <div class="col-6 col-lg-3">
+          <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
               <h1 class="h6 text-muted">Income:</h1>
               <p class="font-weight-light">
@@ -17,7 +17,7 @@
               </p>
             </div>
           </div>
-          <div class="col-6 col-lg-3">
+          <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
               <h1 class="h6 text-muted">Expense:</h1>
               <p class="">
@@ -26,42 +26,6 @@
                <?php else:?>
                &#8358;<?= put_coma($data['expense'])?>.00
                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">Asset:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['investment'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['investment'])?>.00
-                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">Savings:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['savings'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['savings'])?>.00
-                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 offset-3 text-center">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">On Charity:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['charity'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['charity'])?>.00
-                <?php endif;?>
               </p>
             </div>
           </div>
@@ -89,15 +53,19 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+            <td class="col-4">
+              <p style="font-size:13px;">
+                <?php echo $post->amount ?>
+              </p>
             </td>
             <!-- Second Table data -->
-            <td class="col-8" class="text-center">
-              <div class="float-end"><?php echo $post->caption ?></div>
+            <td class="col-8" class="">
+              <!-- Caption div -->
+              <div class="float-end">
+                  <p style="font-size:13px;"><?php echo $post->caption ?></p>
+              </div>
             </td><!-- Second Table data Ends -->
-          
-          </tr><!-- Second Table row ends -->
+         </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
       </table>

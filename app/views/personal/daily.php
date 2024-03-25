@@ -44,10 +44,10 @@
   </div>
 </div>
 <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-lg-7 mx-auto text-center">
         <h1 class="h4 text-center">All Transactions For Today</h1>
         <div class="row">
-          <div class="col-6 col-lg-3">
+          <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
               <h1 class="h6 text-muted">Income:</h1>
               <p class="font-weight-light">
@@ -59,7 +59,7 @@
               </p>
             </div>
           </div>
-          <div class="col-6 col-lg-3">
+          <div class="col-6">
             <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
               <h1 class="h6 text-muted">Expense:</h1>
               <p class="">
@@ -68,42 +68,6 @@
                <?php else:?>
                &#8358;<?= put_coma($data['expense'])?>.00
                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">Asset:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['investment'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['investment'])?>.00
-                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">Savings:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['savings'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['savings'])?>.00
-                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6 offset-lg-3 text-center">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">On Charity:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['charity'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['charity'])?>.00
-                <?php endif;?>
               </p>
             </div>
           </div>
@@ -116,7 +80,7 @@
       <table class="table">
         <thead>
           <tr class="border">
-            <th colspan="2"><span class="text-success">Today's Record</span></th>
+            <th colspan="3" class="text-center"><span class="text-success">Today's Record</span></th>
           </tr>
         </thead>
         <tbody>
@@ -131,22 +95,26 @@
           <tr class="border row">
             <!-- First Table data -->
             <td class="col-3">
-              <p style="font-size:13px;"><?php echo $post->amount ?></p>
+              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none;"><?php echo $post->amount ?></a></p>
             </td>
             <!-- Second Table data -->
             <td class="col-8" class="">
               <!-- Caption div -->
-              <div style="font-size:11px;"><?php echo $post->caption ?></div>
+              <div class="float-end">
+                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;">
+                  <?php echo $post->caption ?>
+                </a>
+              </div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
-               <!-- Edit icon div -->
+               <!-- Delete icon div -->
               <div class="float-end">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>">
-                  Edit
-                </a>
-              </div><!-- Edit icon div end-->
+                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
+                  <button type="submit" style="color: antiquewhite;background: darkred;border: 0;"><span class="fw-bold">&times;</span></button>
+                </form>
+              </div><!-- Delete icon div ends-->
             </td>
-          </tr><!-- Second Table row ends -->
+         </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
       </table>

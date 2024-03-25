@@ -12,11 +12,6 @@
                 <option value="">---</option>
                 <option value="expense">Expenses</option>
                 <option value="income">Income</option>
-                <option value="savings">Savings</option>
-                <option value="investment">Investment</option>
-                <option value="charity">Charity</option>
-                <!-- <option value="borrowed-in">Borrowed-in</option>
-                <option value="borrowed-out">Borrowed-out</option> -->
               </select>
               <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
           </div>

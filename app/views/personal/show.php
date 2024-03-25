@@ -33,10 +33,17 @@
   <div class="row">
     <div class="col-lg-10 mx-auto">
       <?php if(!empty($data['posts'])):?>
-      <table class="table">
+      <table class="table" id="t1">
         <thead>
           <tr class="border text-center">
-            <th colspan="2">All Transactions</th>
+            <th>
+              <div class="float-start"> Amount</div>
+            </th>
+            <th>
+              <div class="float-end">Caption</div>
+            </th>
+
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +55,7 @@
             }
 
           ?>
-          <tr class="border row">
+          <tr class="border">
 
             <!-- First Table data -->
             <td class="col-3" style="position: relative;">
@@ -104,3 +111,9 @@
     </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+<script type="text/javascript">
+   new DataTable('#t1', {
+    paging: true,
+  });
+</script>
