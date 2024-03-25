@@ -11,17 +11,20 @@
 
     // Load All Posts
     public function index(){
-      //$posts = $this->postModel->getPosts();
-      // $expense = $this->postModel->getExpense();
-      // $income = $this->postModel->getIncome();
-      $posts = $this->postModel->getCurrentWeek_7();
+      $posts = $this->postModel->getCurrentWeek_LM7();
       $expense = $this->postModel->getCurrentWeekExpense();
       $income = $this->postModel->getCurrentWeekIncome();
+      $investment = $this->postModel->getCurrentWeekInvestment();
+      $savings = $this->postModel->getCurrentWeekSavings();
+      $charity = $this->postModel->getCurrentWeekCharity();
 
       $data = [
         'posts' => $posts,
         'expense' => $expense,
         'income' => $income,
+        'investment' => $investment,
+        'savings' => $savings,
+        'charity' => $charity,
         'amount' => '',
         'caption' => ''
       ];
@@ -71,7 +74,7 @@
         if(empty($data['type'])){
             // $data['type_err'] = 'Please select transaction type';
             // $this->view('personal/index', $data);
-          flash('msg', 'All fields are required..', 'alert alert-danger');
+          flash('msg', 'Transaction type and amount are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
@@ -80,33 +83,30 @@
         }elseif(empty($data['amount'])){
             // $data['amount_err'] = 'Please enter amount';
             // $this->view('personal/index', $data);
-            flash('msg', 'All fields are required..', 'alert alert-danger');
+            flash('msg', 'Transaction type and amount are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
           </script>
           ";
         }elseif(empty($data['caption'])){
-            // $data['caption_err'] = 'Briefly describe transaction';
-            // $this->view('personal/index', $data);
-          flash('msg', 'All fields are required..', 'alert alert-danger');
-          echo "
-          <script type='text/javascript'>
-            window.location = window.location.href;
-          </script>
-          ";
+            $data['caption'] = $data['type'];
+            $this->postModel->addPost($data);
+            flash('msg', 'Transaction Added');
+            redirect('personal');
         }elseif($data['type'] == 'expense') {
             $this->postModel->addPost($data);
             flash('msg', 'Transaction Added', 'alert alert-danger');
             redirect('personal');
-        }elseif($data['type'] == 'income') {
+        }else {
             $this->postModel->addPost($data);
             flash('msg', 'Transaction Added');
             redirect('personal');
-
-        }else{
-            die('Something went wrong');  
+ 
         }
+        // else{
+        //     die('Something went wrong');  
+        // }
         
 
       }//Post request method ends..
@@ -132,11 +132,17 @@
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        if(empty($_POST['caption'])){
+          $caption = $_POST['type'];
+        }else{
+          $caption = $_POST['caption'];
+        }
         
         $data = [
           'id' => $id,
           'amount' => trim($_POST['amount']),
-          'caption' => trim($_POST['caption']),
+          'caption' => $caption,
           'user_id' => $_SESSION['user_id'],
           'type' => $_POST['type'],
           'date' => $_POST['date'],
@@ -145,10 +151,11 @@
           'caption_err' => '',
           'type_err' => ''
         ];
+      
         $this->postModel->updatePost($data);
         flash('msg','Edit Successfull');
         redirect('personal');
-
+        
       } else {
         // Get post from model
         $post = $this->postModel->getPostById($id);
@@ -207,22 +214,11 @@
         $year = $_POST['year'];
         $income = 'income';
         $expense = 'expense';
+        $investment = 'investment';
+        $savings = 'savings';
+        $charity = 'charity';
         if (empty($date)) {
-          flash('msg', 'All fields are required..', 'alert alert-danger');
-          echo "
-          <script type='text/javascript'>
-            window.location = window.location.href;
-          </script>
-          ";
-        }elseif (empty($month)) {
-          flash('msg', 'All fields are required..', 'alert alert-danger');
-         echo "
-          <script type='text/javascript'>
-            window.location = window.location.href;
-          </script>
-          ";
-        }elseif (empty($year)) {
-          flash('msg', 'All fields are required..', 'alert alert-danger');
+          flash('msg', 'Date is required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
@@ -233,11 +229,17 @@
         $posts = $this->postModel->getSpecificDate($id, $date, $month, $year);
         $expense = $this->postModel->getExpenseDate($id, $date, $month, $year, $expense);
         $income = $this->postModel->getIncomeDate($id, $date, $month, $year, $income);
+        $investment = $this->postModel->getInvestmentDate($id, $date, $month, $year, $investment);
+        $savings = $this->postModel->getSavingsDate($id, $date, $month, $year, $savings);
+        $charity = $this->postModel->getCharityDate($id, $date, $month, $year, $charity);
 
         $data = [
           'posts' => $posts,
           'income' => $income,
           'expense' => $expense,
+          'investment' => $investment,
+          'savings' => $savings,
+          'charity' => $charity,
           'date' => $date,
           'month' => $month,
           'year' => $year
@@ -252,6 +254,9 @@
       $posts = $this->postModel->getPostsAll();
       $expense = $this->postModel->getExpense();
       $income = $this->postModel->getIncome();
+      $investment = $this->postModel->getInvestment();
+      $savings = $this->postModel->getSavings();
+      $charity = $this->postModel->getCharity();
 
       $data = [
         'date' => $date,
@@ -259,7 +264,10 @@
         'month' => $month,
         'posts' => $posts,
         'expense' => $expense,
-        'income' => $income
+        'income' => $income,
+        'investment' => $investment,
+        'savings' => $savings,
+        'charity' => $charity
       ];
       
       $this->view('personal/daily', $data);

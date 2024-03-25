@@ -50,24 +50,23 @@
           ?>
           <tr class="border row">
             <!-- First Table data -->
-            <td class="col-4 position-relative" style="position: relative;">
-              <p style="font-size:11px;"><?php echo $post->amount ?></p>
-              <p style="font-size:12px;position: absolute;right: 0;top: 0;font-weight: bolder;"><?php echo $post->day ?></p>
+            <td class="col-3">
+              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?> " style="text-decoration: none;"><?php echo $post->amount ?></a></p>
             </td>
             <!-- Second Table data -->
-            <td class="col-7">
+            <td class="col-8" class="">
               <!-- Caption div -->
-              <div style="font-size:13px;" class="float-end pe-1"><?php echo $post->caption ?></div>
+              <div class="float-end"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;"><?php echo $post->caption ?></a></div>
             </td><!-- Second Table data Ends -->
             <td class="col-1">
-               <!-- Edit icon div -->
+               <!-- Delete icon div -->
               <div class="float-end">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>">
-                  Edit
-                </a>
-              </div><!-- Edit icon div end-->
+                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
+                  <button type="submit" style="color: antiquewhite;background: darkred;border: 0;"><span class="fw-bold">&times;</span></button>
+                </form>
+              </div><!-- Delete icon div ends-->
             </td>
-          </tr><!-- Second Table row ends -->
+         </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
       </table>

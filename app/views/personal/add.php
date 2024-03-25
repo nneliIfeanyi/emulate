@@ -7,16 +7,21 @@
         <?php flash('msg');?>
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">
           <div class="form-group mb-2">
-              <label>Select transaction type:</label>
+              <label>Select transaction type:</label><span class="text-danger" style="font-size:20px;">*</span>
               <select class="form-control <?php echo (!empty($data['type_err'])) ? 'is-invalid' : ''; ?>" name="type">
                 <option value="">---</option>
                 <option value="expense">Expenses</option>
                 <option value="income">Income</option>
+                <option value="savings">Savings</option>
+                <option value="investment">Investment</option>
+                <option value="charity">Charity</option>
+                <!-- <option value="borrowed-in">Borrowed-in</option>
+                <option value="borrowed-out">Borrowed-out</option> -->
               </select>
               <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
           </div>
           <div class="form-group mb-2">
-              <label>Amount:</label>
+              <label>Amount:</label><span class="text-danger" style="font-size:20px;">*</span>
               <input type="number" name="amount" class="form-control <?php echo (!empty($data['amount_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['amount']; ?>" placeholder="">
               <span class="invalid-feedback"><?php echo $data['amount_err']; ?></span>
           </div>

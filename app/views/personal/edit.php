@@ -3,6 +3,11 @@
   <div class="col-lg-7 mx-auto">
       <div class="card card-body bg-light my-5">
         <h2>Edit Transaction</h2>
+          <?php if(!empty(flash('msg'))) :?>
+            <p class="font-weight-light">
+            <?php flash('msg');?>
+            </p>
+          <?php endif;?>
         <p>Change the details of this transaction</p>
         <form action="<?php echo URLROOT; ?>/personal/edit/<?php echo $data['id']; ?>" method="post">
           <div class="form-group mb-3">
@@ -11,6 +16,9 @@
                 <option value="<?php echo $data['type'];?>"><?php echo $data['type'];?></option>
                 <option value="expense">Expenses</option>
                 <option value="income">Income</option>
+                 <option value="savings">Savings</option>
+                <option value="investment">Investment</option>
+                <option value="charity">Charity</option>
               </select>
               <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
           </div>
@@ -22,7 +30,7 @@
 
           <div class="form-group mb-3">
               <label>Caption:</label>
-              <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
+              <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"></textarea>
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
           </div>
           <?php if(date('W') == $data['week']):?>
