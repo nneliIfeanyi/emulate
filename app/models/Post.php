@@ -14,6 +14,44 @@
       return $results;
     }
 
+    // Get last 7 recent Posts //
+    public function getPosts_LIMIT_7(){
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id ORDER BY posts.created_at DESC LIMIT 7;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+     // Get sum of Expense
+    public function getExpenseTotal_all(){
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':type', 'expense');
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+
+    // Get sum of Expense
+    public function getIncomeTotal_all(){
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':type', 'income');
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+
+
+
+
+
+
+
+
+
+    
+
      // Get All Posts for current day
     public function getPostsAll(){
       $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
@@ -29,17 +67,6 @@
      // Get All Posts for current week //
     public function getCurrentWeek(){
       $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':week', date('W'));
-      $this->db->bind(':year', date('Y'));
-      $results = $this->db->resultset();
-
-      return $results;
-    }
-
-     // Get last 7 recent Posts for current week //
-    public function getCurrentWeek_LM7(){
-      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND week = :week AND year = :year ORDER BY posts.created_at DESC LIMIT 7;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $this->db->bind(':week', date('W'));
       $this->db->bind(':year', date('Y'));
@@ -129,43 +156,6 @@
       return $row;
       }
 
-      public function getInvestment(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'investment');
-       $this->db->bind(':day', date('jS'));
-      $this->db->bind(':month', date('M'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-      public function getCharity(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'charity');
-       $this->db->bind(':day', date('jS'));
-      $this->db->bind(':month', date('M'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-
-      public function getSavings(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'savings');
-       $this->db->bind(':day', date('jS'));
-      $this->db->bind(':month', date('M'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
    
     // Get sum of Expense for a selected date
     public function getExpenseDate($id, $date, $month, $year, $expense){
@@ -181,44 +171,6 @@
       return $row;
       }
 
-      public function getInvestmentDate($id, $date, $month, $year, $investment){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $id);
-      $this->db->bind(':type', $investment);
-      $this->db->bind(':day', $date);
-      $this->db->bind(':month', $month);
-      $this->db->bind(':year', $year);
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-
-      public function getSavingsDate($id, $date, $month, $year, $savings){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $id);
-      $this->db->bind(':type', $savings);
-      $this->db->bind(':day', $date);
-      $this->db->bind(':month', $month);
-      $this->db->bind(':year', $year);
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-
-      public function getCharityDate($id, $date, $month, $year, $charity){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND d_num = :day AND month = :month AND year = :year;");
-      $this->db->bind(':id', $id);
-      $this->db->bind(':type', $charity);
-      $this->db->bind(':day', $date);
-      $this->db->bind(':month', $month);
-      $this->db->bind(':year', $year);
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
 
       // Get sum of Expense for a selected date
     public function getIncomeDate($id, $date, $month, $year, $income){
@@ -274,41 +226,6 @@
       return $row;
       }
 
-      public function getCurrentWeekInvestment(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'investment');
-      $this->db->bind(':week', date('W'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-
-      public function getCurrentWeekSavings(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'savings');
-      $this->db->bind(':week', date('W'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
-
-      public function getCurrentWeekCharity(){
-      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week AND year = :year;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $this->db->bind(':type', 'charity');
-      $this->db->bind(':week', date('W'));
-      $this->db->bind(':year', date('Y'));
-      //Execute
-      $row = $this->db->sumColumn();
-
-      return $row;
-      }
 
        // Get sum of Expense for current week
     public function getCurrentWeekIncome(){

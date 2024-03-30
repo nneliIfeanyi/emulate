@@ -82,7 +82,7 @@
             <!-- First Table data -->
             <td class="col-4 position-relative" style="position: relative;">
               <p style="font-size:11px;"><?php echo $post->amount ?></p>
-              <p style="font-size:12px;position: absolute;right: 0;top: 0;font-weight: bolder;"><?php echo $post->day.$post->d_num ?></p>
+              <p style="font-size:8px;position: absolute;right: 0;top: 0;font-weight: bolder;"><?php echo $post->day.'-'.$post->d_num ?></p>
             </td>
             <!-- <td class="col-1 fw-bold">
               

@@ -115,5 +115,6 @@
 <script type="text/javascript">
    new DataTable('#t1', {
     paging: true,
+    ordering:false
   });
 </script>

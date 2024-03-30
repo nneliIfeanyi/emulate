@@ -11,20 +11,14 @@
 
     // Load All Posts
     public function index(){
-      $posts = $this->postModel->getCurrentWeek_LM7();
-      $expense = $this->postModel->getCurrentWeekExpense();
-      $income = $this->postModel->getCurrentWeekIncome();
-      $investment = $this->postModel->getCurrentWeekInvestment();
-      $savings = $this->postModel->getCurrentWeekSavings();
-      $charity = $this->postModel->getCurrentWeekCharity();
+      $posts = $this->postModel->getPosts_LIMIT_7();
+      $expense = $this->postModel->getExpenseTotal_all();
+      $income = $this->postModel->getIncomeTotal_all();
 
       $data = [
         'posts' => $posts,
         'expense' => $expense,
         'income' => $income,
-        'investment' => $investment,
-        'savings' => $savings,
-        'charity' => $charity,
         'amount' => '',
         'caption' => ''
       ];
@@ -259,9 +253,6 @@
       $posts = $this->postModel->getPostsAll();
       $expense = $this->postModel->getExpense();
       $income = $this->postModel->getIncome();
-      $investment = $this->postModel->getInvestment();
-      $savings = $this->postModel->getSavings();
-      $charity = $this->postModel->getCharity();
 
       $data = [
         'date' => $date,
@@ -269,10 +260,7 @@
         'month' => $month,
         'posts' => $posts,
         'expense' => $expense,
-        'income' => $income,
-        'investment' => $investment,
-        'savings' => $savings,
-        'charity' => $charity
+        'income' => $income
       ];
       
       $this->view('personal/daily', $data);

@@ -1,77 +1,59 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
-  <div class="col-12">
-    <div class="card card-body mb-3">
-      <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
-      <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
-      <form action="<?php echo URLROOT?>/personal/daily" method="POST">
-        <div class="row">
-          <div class="col-6 py-2 col-lg-3 form-group">
-            <select class="form-control <?php echo (!empty($data['day_err'])) ? 'is-invalid' : ''; ?>" name="date">
-              <option value="">Date</option>
-              <?php foreach($data['date'] as $date):?>
-              <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
-              <?php endforeach;?>
-            </select>
-          </div>
-
-        <div class="col-6 py-2 col-lg-3 form-group">
-            <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="month">
-              <option value="<?php echo date('M')?>"><?php echo date('M')?></option>
-              <?php foreach($data['month'] as $month):?>
-              <option value="<?php echo $month->month?>"><?php echo $month->month?></option>
-              <?php endforeach;?>
-            </select>
-        </div>
-
-        <div class="col-6 py-2 col-lg-3 form-group">
-            <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
-              <option value="<?php echo date('Y')?>"><?php echo date('Y')?></option>
-              <?php foreach($data['year'] as $year):?>
-              <option value="<?php echo $year->year?>"><?php echo $year->year?></option>
-              <?php endforeach;?>
-            </select>
-        </div>
-
-        <div class="col-6 col-lg-3 form-group">
-          <div class="d-grid">
-           <button type="submit" class="btn btn-success">Navigate</button> 
-          </div>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div class="row">
-      <div class="col-lg-7 mx-auto text-center">
+      <div class="col-12 mx-auto text-center">
         <h1 class="h4 text-center">All Transactions For Today</h1>
         <div class="row">
-          <div class="col-6">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-              <h1 class="h6 text-muted">Income:</h1>
-              <p class="font-weight-light">
-                <?php if(empty($data['income'])):?>
-                &#8358;0.00
-                <?php else:?>
-                &#8358;<?= put_coma($data['income'])?>.00
-                <?php endif;?>
-              </p>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
-              <h1 class="h6 text-muted">Expense:</h1>
-              <p class="">
-               <?php if(empty($data['expense'])):?>
-               &#8358;0.00
-               <?php else:?>
-               &#8358;<?= put_coma($data['expense'])?>.00
-               <?php endif;?>
-              </p>
-            </div>
-          </div>
+      <div class="col-6 col-lg-3">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
+          <p class="h6">Balance:</p>
+          <p class="font-weight-bold">
+           <?php if(empty($data['expense']) AND empty($data['income'])):?>
+           &#8358;0.00
+           <?php elseif($data['expense'] > $data['income']):?>
+            <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
+           <?php else:?>
+           &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
+           <?php endif;?>
+          </p>
         </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+          <p class="h6 text-muted">Income:</p>
+          <p class="font-weight-light">
+            <?php if(empty($data['income'])):?>
+            &#8358;0.00
+            <?php else:?>
+            &#8358;<?= put_coma($data['income'])?>.00
+            <?php endif;?>
+          </p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+          <p class="h6 text-muted">Expense:</p>
+          <p class="">
+           <?php if(empty($data['expense'])):?>
+           &#8358;0.00
+           <?php else:?>
+           &#8358;<?= put_coma($data['expense'])?>.00
+           <?php endif;?>
+          </p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
+          <p class="h6 text-muted">Tithe:</p>
+          <p class="">
+           <?php if(empty($data['income'])):?>
+           &#8358;0.00
+           <?php else:?>
+           &#8358;<?= tithe($data['income']) ?>
+           <?php endif;?>
+          </p>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
 <div class="row">
@@ -139,6 +121,51 @@
     <a href="<?php echo URLROOT?>/personal/add">
       <i class="fa fa-plus"></i> Add Transaction
     </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card card-body mb-3">
+      <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
+      <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
+      <form action="<?php echo URLROOT?>/personal/daily" method="POST">
+        <div class="row">
+          <div class="col-6 py-2 col-lg-3 form-group">
+            <select class="form-control <?php echo (!empty($data['day_err'])) ? 'is-invalid' : ''; ?>" name="date">
+              <option value="">Date</option>
+              <?php foreach($data['date'] as $date):?>
+              <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
+              <?php endforeach;?>
+            </select>
+          </div>
+
+        <div class="col-6 py-2 col-lg-3 form-group">
+            <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="month">
+              <option value="<?php echo date('M')?>"><?php echo date('M')?></option>
+              <?php foreach($data['month'] as $month):?>
+              <option value="<?php echo $month->month?>"><?php echo $month->month?></option>
+              <?php endforeach;?>
+            </select>
+        </div>
+
+        <div class="col-6 py-2 col-lg-3 form-group">
+            <select class="form-control <?php echo (!empty($data['year_err'])) ? 'is-invalid' : ''; ?>" name="year">
+              <option value="<?php echo date('Y')?>"><?php echo date('Y')?></option>
+              <?php foreach($data['year'] as $year):?>
+              <option value="<?php echo $year->year?>"><?php echo $year->year?></option>
+              <?php endforeach;?>
+            </select>
+        </div>
+
+        <div class="col-6 col-lg-3 form-group">
+          <div class="d-grid">
+           <button type="submit" class="btn btn-success">Navigate</button> 
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
   </div>
 </div>
 
