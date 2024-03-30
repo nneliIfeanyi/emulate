@@ -121,9 +121,14 @@
           <?php endforeach; ?>
           </tbody>
       </table>
-      <div class="text-center mt-2 mb-4">
-        <a href="<?php echo URLROOT?>/personal/show" class="btn"><i class="fa fa-eye text-success"></i> Veiw all transactions</a>
-        <a href="<?php echo URLROOT?>/personal/daily" class="btn"><i class="fa fa-eye text-success"></i> Veiw today's ..</a>
+
+      <div class="row my-3">
+        <div class="text-center col-lg-6 shadow py-2 rounded-2">
+          <a href="<?php echo URLROOT?>/personal/show"><i class="fa fa-eye text-success"></i> Veiw all transactions</a>
+        </div>
+        <div class="text-center col-lg-6 shadow py-2 rounded-2">
+          <a href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-eye text-success"></i> Veiw today's ..</a>
+        </div>
       </div>
         <?php else:?>
           <div class="my-3 card card-body">

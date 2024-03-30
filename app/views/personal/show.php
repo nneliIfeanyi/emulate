@@ -42,8 +42,6 @@
             <th>
               <div class="float-end">Caption</div>
             </th>
-
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -60,34 +58,19 @@
             <!-- First Table data -->
             <td class="col-3" style="position: relative;">
               <p style="font-size:13px;">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" 
-                   style="text-decoration: none;">
                   <?php echo $post->amount ?>
-                </a>
               </p>
               <p style="font-size:7px;position: absolute;right: 0;top: 0;font-weight: bolder;">    <?php echo $post->day.'-'.$post->d_num ?>
               </p>
             </td>
 
             <!-- Second Table data -->
-            <td class="col-8" class="">
+            <td class="col-9" class="">
               <!-- Caption div -->
               <div class="float-end">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" 
-                   style="text-decoration: none; color: black;font-size: 13px;">
-                   <?php echo $post->caption ?>
-                </a>
+                <?php echo $post->caption ?>
               </div>
             </td><!-- Second Table data Ends -->
-
-            <td class="col-1">
-               <!-- Delete icon div -->
-              <div class="float-end">
-                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
-                  <button type="submit" style="color: antiquewhite;background: darkred;border: 0;"><span class="fw-bold">&times;</span></button>
-                </form>
-              </div><!-- Delete icon div ends-->
-            </td>
          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
