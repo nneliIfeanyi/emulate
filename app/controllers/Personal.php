@@ -228,17 +228,11 @@
         $posts = $this->postModel->getSpecificDate($id, $date, $month, $year);
         $expense = $this->postModel->getExpenseDate($id, $date, $month, $year, $expense);
         $income = $this->postModel->getIncomeDate($id, $date, $month, $year, $income);
-        $investment = $this->postModel->getInvestmentDate($id, $date, $month, $year, $investment);
-        $savings = $this->postModel->getSavingsDate($id, $date, $month, $year, $savings);
-        $charity = $this->postModel->getCharityDate($id, $date, $month, $year, $charity);
 
         $data = [
           'posts' => $posts,
           'income' => $income,
           'expense' => $expense,
-          'investment' => $investment,
-          'savings' => $savings,
-          'charity' => $charity,
           'date' => $date,
           'month' => $month,
           'year' => $year

@@ -16,9 +16,9 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <h5 class="text-success"><?php echo SITENAME?></h5>
-             <p style="font-size: 12px;font-style: italic;">
-              Just remember, no matter how easy it is to spend your money, its not getting any easier to make that money.<span class="font-weight-bold"> Spending is Quick Earning is Slow</span>
+            <h5 class="">Spending is Quick Earning is Slow</h5>
+             <p class="lead">
+              Just remember, no matter how easy it is to spend your money, its not getting any easier to make that money.
             </p>
           </div>
           
@@ -73,3 +73,12 @@
     })
 </script>
 </html>
+
+https://code.jquery.com/jquery-3.7.1.js
+https://cdn.datatables.net/2.0.3/js/dataTables.js
+https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js
+https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js
+https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js
+https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js
