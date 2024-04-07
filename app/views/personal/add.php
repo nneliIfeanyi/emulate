@@ -4,7 +4,7 @@
     <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5">
         <h5 class="mb-3">Add Transaction</h5>
-        <?php flash('msg');?>
+        <div class="flash-msg"><?php flash('msg');?></div>
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">
           <div class="form-group mb-2">
               <label>Select transaction type:</label><span class="text-danger" style="font-size:20px;">*</span>

@@ -8,10 +8,10 @@
             <h5 class="">Quick Links</h5>
             <ul class="list-unstyled">
               <li><a href="<?php echo URLROOT?>">Home</a></li>
-              <li><a href="<?php echo URLROOT?>/personal/add">Add Transaction</a></li>
               <li><a href="<?php echo URLROOT?>/personal/daily">Daily View</a></li>
               <li><a href="<?php echo URLROOT?>/personal/current_week">Weekly View</a></li>
               <li><a href="<?php echo URLROOT?>/personal/monthly">Monthly View</a></li>
+              <li><a href="<?php echo URLROOT?>/personal/add">Add Transaction</a></li>
               <li><a href="<?php echo URLROOT?>/pages/journal">Journal</a></li>
             </ul>
           </div>
