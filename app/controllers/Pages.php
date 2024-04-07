@@ -1,7 +1,9 @@
 <?php
   class Pages extends Controller{
+    private $userModel;
+    private $postModel;
     public function __construct(){
-     
+     $this->postModel = $this->model('Post');
     }
 
     // Load Homepage
@@ -22,12 +24,32 @@
     }
 
     public function journal(){
-      //Set Data
       $data = [
-        'version' => '1.0.0'
-      ];
 
-      // Load about view
+      ];
+        
       $this->view('pages/journal', $data);
     }
+
+
+    public function download(){
+        $posts = $this->postModel->getCurrentWeek();
+        $expense = $this->postModel->getCurrentWeekExpense();
+        $income = $this->postModel->getCurrentWeekIncome();
+
+        $week = $this->postModel->getDistinctWeek();
+        $year = $this->postModel->getDistinctYear();
+
+        $data = [
+          'posts' => $posts,
+          'expense' => $expense,
+          'income' => $income,
+          'week' => $week,
+          'year' => $year
+        ];
+      $this->view('pages/download', $data);
+    }
+
+
+
   }

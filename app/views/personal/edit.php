@@ -54,7 +54,7 @@
               </div>
 
               <div class="col-6 col-lg-3 mb-3 form-group">
-                <label>Date: </label>
+                <label>Week: </label>
                 
                 <select class="form-control" name="week2">
                   <option value="<?php echo $data['week']; ?>"><?php echo $data['week']; ?></option>

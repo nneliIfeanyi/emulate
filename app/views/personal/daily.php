@@ -1,63 +1,40 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row">
-      <div class="col-12 mx-auto text-center">
-        <h1 class="h4 text-center">All Transactions For Today</h1>
-        <div class="row">
-      <div class="col-6 col-lg-3">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
-          <p class="h6">Balance:</p>
-          <p class="font-weight-bold">
-           <?php if(empty($data['expense']) AND empty($data['income'])):?>
-           &#8358;0.00
-           <?php elseif($data['expense'] > $data['income']):?>
-            <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
-           <?php else:?>
-           &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-          <p class="h6 text-muted">Income:</p>
-          <p class="font-weight-light">
-            <?php if(empty($data['income'])):?>
-            &#8358;0.00
-            <?php else:?>
-            &#8358;<?= put_coma($data['income'])?>.00
-            <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
-          <p class="h6 text-muted">Expense:</p>
-          <p class="">
-           <?php if(empty($data['expense'])):?>
-           &#8358;0.00
-           <?php else:?>
-           &#8358;<?= put_coma($data['expense'])?>.00
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
-          <p class="h6 text-muted">Tithe:</p>
-          <p class="">
-           <?php if(empty($data['income'])):?>
-           &#8358;0.00
-           <?php else:?>
-           &#8358;<?= tithe($data['income']) ?>
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
-    </div>
-      </div>
-    </div>
+<h1 class="h4 text-center">All Transactions For Today <br>
+  <span class="lead text-muted fs-6"> <?= date('D').','.date('d-M') ?></span>
+</h1>
+ <!-- Current Day -->
 <div class="row">
     <div class="col-lg-10 mx-auto">
+       <div class="row">
+         <div class="col-md-6">
+           <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+             <h1 class="h6"><span class="text-muted">Income: </span>
+             </h1>
+             <p class="font-weight-light">
+               <?php if(empty($data['income'])):?>
+               &#8358;0.00
+               <?php else:?>
+               &#8358;<?= put_coma($data['income'])?>
+               <?php endif;?>
+             </p>
+           </div>
+         </div>
+         <div class="col-md-6">
+           <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+             <h1 class="h6"><span class="text-muted">Expense: </span>
+             </h1>
+             <p class="">
+              <?php if(empty($data['expense'])):?>
+              &#8358;0.00
+              <?php else:?>
+              &#8358;<?= put_coma($data['expense'])?>
+              <?php endif;?>
+             </p>
+           </div>
+         </div>
+       </div>
+<!-- Current Day ends -->       
+
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>
@@ -101,31 +78,32 @@
           </tbody>
       </table>
       
-        <?php else:?>
-          <div class="my-3 card card-body">
-            <div class="card-title">
-              <h6>Today's Record</h6>
-            </div>
-            <p class="card-text">No records yet.</p>
-            </div>
-        <?php endif;?>
-    </div>
-  </div>
-<div class="row my-3">
-  <div class="text-center col-lg-6 shadow py-2 rounded-2">
-    <a href="<?php echo URLROOT?>/personal/current_week">
-      <i class="fa fa-eye"></i> Veiw All Transactions For Current Week
-    </a>
-  </div>
-  <div class="text-center col-lg-6 shadow py-2 rounded-2">
-    <a href="<?php echo URLROOT?>/personal/add">
-      <i class="fa fa-plus"></i> Add Transaction
-    </a>
-  </div>
-</div>
+      <?php else:?>
+        <div class="my-3 card card-body">
+          <div class="card-title">
+            <h6>Today's Record</h6>
+          </div>
+          <p class="card-text">No records yet.</p>
+          </div>
+      <?php endif;?>
 
-<div class="row">
-  <div class="col-12">
+      <div class="row my-5">
+        <div class="col-md-6">
+          <div class="d-grid mb-3">
+            <a href="<?php echo URLROOT?>/personal/current_week" class="btn btn-outline-dark">
+              <i class="fa fa-eye"></i> Veiw Current Week
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-grid">
+            <a href="<?php echo URLROOT?>/personal/add" class="btn btn-outline-dark">
+              <i class="fa fa-plus"></i> Add Transaction
+            </a>
+          </div>
+        </div>
+      </div>
+
     <div class="card card-body mb-3">
       <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
       <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
@@ -169,4 +147,11 @@
   </div>
 </div>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+<div style="position: fixed;bottom: 1vh;right: 1vw;">
+    <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
+      <a href="<?php echo URLROOT;?>/personal/add" style="font-size: 22px;">
+        <i class="fa fa-plus-circle fa-3x text-success"></i>
+      </a>
+    </p>
+  </div>
+<?php require APPROOT . '/views/inc/foot.php'; ?>

@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 
-<div class="row mt-4 mb-3">
+<div class="row my-3">
   <div class="col-lg-7 mx-auto">
-    <h1 class="h6 mb-3 text-center text-muted"><span class="text-primary">Showing Week: <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?></span></h1>
+    <h1 class="h6 mb-3 text-center text-muted"><span class="text-primary">Showing: Week <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?></span></h1>
     <div class="row">
       <div class="col-6">
         <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
@@ -33,13 +33,16 @@
   </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-10 mx-auto mb-3">
+<div class="table-responsive">
       <?php if(!empty($data['posts'])):?>
-      <table class="table">
+      <table id="example"class="display" style="width:100%;">
         <thead>
-          <tr class="border text-center">
-            <th colspan="2"><span class="text-success">Transaction Records For Week <span class="text-dark text-muted"><?php echo $data['week'].' '.$data['year']; ?></span></span></th>
+          <tr class="border">
+            
+            <th>Date</th>
+            <th>Category</th>
+            <th>Caption</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -51,37 +54,65 @@
             }
 
           ?>
-          <tr class="border row">
+          <tr class="border">
+
             <!-- First Table data -->
-            <td class="col-4">
-              <p style="font-size:13px;">
-                <?php echo $post->amount ?>
-              </p>
-            </td>
-            <!-- Second Table data -->
-            <td class="col-8" class="">
-              <!-- Caption div -->
-              <div class="float-end">
-                  <p style="font-size:13px;"><?php echo $post->caption ?></p>
-              </div>
-            </td><!-- Second Table data Ends -->
-         </tr><!-- Second Table row ends -->
+           
+            <td><?php echo $post->day.'-'.$post->d_num ?></td>
+            <td><?php echo $post->type ?></td>
+            <td><?php echo $post->caption ?></td>
+             <td><?php echo $post->amount ?></td>
+          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
+          <tr>
+            <th>Total</th>
+            <th>Expense</th>
+            <th> -- </th>
+            <th>&#8358;<?= put_coma($data['expense'])?></th>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <th>Income</th>
+            <th> -- </th>
+            <th>&#8358;<?= put_coma($data['income'])?></th>
+          </tr>
           </tbody>
       </table>
+    </div>
       
-        <?php else:?>
-          <div class="my-3 card card-body">
-            <div class="card-title">
-              <h6>History</h6>
-            </div>
-            <p class="card-text">No records yet.</p>
-            </div>
-        <?php endif;?>
+    <?php else:?>
+      <div class="my-3 card card-body">
+        <div class="card-title">
+          <h6>History</h6>
+        </div>
+        <p class="card-text">No records yet.</p>
+        </div>
+    <?php endif;?>
     </div>
   </div>
 
-   <div class="text-center mb-4">
+   <div class="text-center mt-5">
     <a class=" btn btn-success" href="<?php echo URLROOT?>/personal/current_week"><i class="fa fa-backward"></i> Return to current week</a>
   </div>
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php require APPROOT . '/views/inc/foot.php'; ?>
+<script>
+  new DataTable('#example', {
+    caption:"All Transactions Week <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?>",
+    paging:false,
+    ordering:false,
+    info:false,
+    layout: {
+        topStart: {
+            buttons: ['copy', 'excel',
+              { extend:'pdf',
+                messageTop:'All Transactions Week <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?>',
+                //messageBottom:'Stanvic Concepts'
+              },
+              { extend:'print',
+                messageTop:'All Transactions Week <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?>',
+                //messageBottom:'Stanvic Concepts'
+              }]
+        }
+    }
+});
+</script>

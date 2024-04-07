@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-6 mx-auto">
-      <div class="card card-body bg-light mt-3">
+      <div class="card card-body bg-light mt-5">
         <h5 class="mb-3">Add Transaction</h5>
         <?php flash('msg');?>
         <form action="<?php echo URLROOT; ?>/personal/add" method="post">
@@ -31,10 +31,19 @@
       </div>
   </div>
 </div>
-<div class="row my-3"><div class="text-center col-lg-6 shadow-sm py-2 rounded-2">
-  <a style="cursor: pointer;" onclick="history.back()"><i class="fa fa-backward"></i> Back</a>
-</div>
-<div class="text-center col-lg-6 shadow-sm py-2 rounded-2">
-  <a href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-eye"></i> View Today</a>
-</div></div>
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+
+    <!--QUICK NAVIGATION -->
+      <div class="row my-5">
+        <div class="col-md-6">
+          <div class="d-grid mb-3">
+            <a href="<?php echo URLROOT;?>/personal" class="btn btn-outline-dark"><i class="fa fa-backward"></i> Back</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="d-grid">
+            <a href="<?php echo URLROOT?>/personal/daily" class="btn btn-outline-dark"><i class="fa fa-eye"></i> View Today</a>
+          </div>
+        </div>
+      </div>
+<?php require APPROOT . '/views/inc/foot.php'; ?>

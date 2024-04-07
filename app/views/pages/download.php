@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
-<h1 class="h6 mb-3 text-center text-muted">Showing Selected Date: <span class="text-primary"><?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?></span></h1>
-
-<div class="table-responsive">
-      <?php if(!empty($data['posts'])):?>
-      <table id="example"class="display" style="width:100%;">
+	
+	<a href="<?php echo URLROOT;?>/personal/current_week" class="btn">
+		<i class="fa fa-backward"></i> Back
+	</a>
+  <div class="table-responsive">
+	<table id="example"class="display" style="width:100%;">
         <thead>
           <tr class="border">
             
@@ -34,51 +34,38 @@
           </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           <tr>
-            <th>Total</th>
-            <th>Expense</th>
-            <th> -- </th>
-            <th>&#8358;<?= put_coma($data['expense'])?></th>
+          	<th>Week <?= date('W') ?></th>
+          	<th>Total</th>
+          	<th>Expense</th>
+          	<th>&#8358;<?= put_coma($data['expense'])?></th>
           </tr>
           <tr>
-            <th>Total</th>
-            <th>Income</th>
-            <th> -- </th>
-            <th>&#8358;<?= put_coma($data['income'])?></th>
+          	<th>Week <?= date('W') ?></th>
+          	<th>Total</th>
+          	<th>Income</th>
+          	<th>&#8358;<?= put_coma($data['income'])?></th>
           </tr>
           </tbody>
       </table>
     </div>
-    <?php else:?>
-      <div class="my-3 card card-body">
-        <div class="card-title">
-          <h6>History</h6>
-        </div>
-        <p class="card-text">No records yet.</p>
-        </div>
-    <?php endif;?>
-   
-  <div class="text-center mt-5">
-    <a class=" btn btn-success" href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-backward"></i> Return to current date</a>
-  </div>
-<?php require APPROOT . '/views/inc/foot.php'; ?>
+	<?php require APPROOT . '/views/inc/foot.php'; ?>
 
-<script>
+	<script>
   new DataTable('#example', {
-    caption:"All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.",
+    caption:"All Transactions For The Current Week <?= date('W') ?>.",
     paging:false,
     ordering:false,
     info:false,
     searching:false,
-    //scrollX:true,
     layout: {
         topStart: {
             buttons: ['copy', 'excel',
               { extend:'pdf',
-                messageTop:'All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
+                messageTop:'All Transactions For The Current Week <?= date('W') ?>.',
                 //messageBottom:'null'
               },
               { extend:'print',
-                messageTop:'All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
+                messageTop:'All Transactions For The Current Week <?= date('W') ?>.',
                 //messageBottom:'Stanvic Concepts'
               }]
         }
