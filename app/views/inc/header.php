@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
-  <title><?php echo SITENAME; ?></title>
+  <title><?php echo SITENAME2; ?></title>
 </head>
 <body style="position: relative;">
   <?php require APPROOT . '/views/inc/navbar.php'; ?>

@@ -7,7 +7,7 @@
       <table id="example"class="display" style="width:100%;">
         <thead>
           <tr class="border">
-            
+            <th>Day</th>
             <th>Date</th>
             <th>Category</th>
             <th>Caption</th>
@@ -24,26 +24,39 @@
 
           ?>
           <tr class="border">
-
             <!-- First Table data -->
-           
-            <td><?php echo $post->day.'-'.$post->d_num ?></td>
+           <td><?php echo $post->day ?></td>
+            <td><?php echo $post->d_num.','.' '.$post->month ?></td>
             <td><?php echo $post->type ?></td>
             <td><?php echo $post->caption ?></td>
-             <td><?php echo $post->amount ?></td>
+            <td><?php echo $post->amount ?></td>
           </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           <tr>
-            <th>Total</th>
-            <th>Expense</th>
+            <th>Total expense</th>
             <th> -- </th>
-            <th>&#8358;<?= put_coma($data['expense'])?></th>
+            <th> -- </th>
+            <th> -- </th>
+            <th>
+              <?php if(!empty($data['expense'])):?>
+                &#8358;<?= put_coma($data['expense'])?>
+              <?php else:?>
+                &#8358;0.00
+              <?php endif;?>
+            </th>
           </tr>
           <tr>
-            <th>Total</th>
-            <th>Income</th>
+           <th>Total income</th>
             <th> -- </th>
-            <th>&#8358;<?= put_coma($data['income'])?></th>
+            <th> -- </th>
+            <th> -- </th>
+            <th>
+              <?php if(!empty($data['income'])):?>
+                &#8358;<?= put_coma($data['income'])?>
+              <?php else:?>
+                &#8358;0.00
+              <?php endif;?>
+            </th>
           </tr>
           </tbody>
       </table>
@@ -64,7 +77,7 @@
 
 <script>
   new DataTable('#example', {
-    caption:"All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.",
+    caption:"Recorded Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.",
     paging:false,
     ordering:false,
     info:false,
@@ -74,11 +87,11 @@
         topStart: {
             buttons: ['copy', 'excel',
               { extend:'pdf',
-                messageTop:'All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
+                messageTop:'Recorded Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
                 //messageBottom:'null'
               },
               { extend:'print',
-                messageTop:'All Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
+                messageTop:'Recorded Transactions For <?php echo $data['date'].' '.$data['month'].' '.$data['year']; ?>.',
                 //messageBottom:'Stanvic Concepts'
               }]
         }
