@@ -20,7 +20,6 @@
       position: fixed;
       top: 12vh;
       right: 0;
-      width: 45vw;
       animation-name: fade;
       animation-duration: 3s;
       animation-delay: 6s;
