@@ -1,5 +1,9 @@
 <?php
   class Personal extends Controller{
+
+      private $postModel;
+      private $userModel;
+
     public function __construct(){
       if(!isset($_SESSION['user_id'])){
         redirect('users/login');
@@ -14,11 +18,23 @@
       $posts = $this->postModel->getPosts_LIMIT_7();
       $expense = $this->postModel->getExpenseTotal_all();
       $income = $this->postModel->getIncomeTotal_all();
+      $weekExpense = $this->postModel->getCurrentWeekExpense();
+      $weekIncome = $this->postModel->getCurrentWeekIncome();
+      $monthExpense = $this->postModel->getCurrentMonthExpense();
+      $monthIncome = $this->postModel->getCurrentMonthIncome();
+      $day_expense = $this->postModel->getExpense();
+      $day_income = $this->postModel->getIncome();
 
       $data = [
         'posts' => $posts,
         'expense' => $expense,
         'income' => $income,
+        'weekIncome' => $weekIncome,
+        'weekExpense' => $weekExpense,
+        'month_income' => $monthIncome,
+        'month_expense' => $monthExpense,
+        'day_income' => $day_income,
+        'day_expense' => $day_expense,
         'amount' => '',
         'caption' => ''
       ];
@@ -92,12 +108,20 @@
           ";
         }elseif($data['type'] == 'expense') {
             $this->postModel->addPost($data);
-            flash('msg', 'Transaction Added', 'alert alert-danger');
-            redirect('personal');
+            flash('msg', 'Expense Recorded..', 'alert alert-danger');
+             echo "
+              <script type='text/javascript'>
+                window.location = window.location.href;
+              </script>
+              ";
         }else {
             $this->postModel->addPost($data);
-            flash('msg', 'Transaction Added');
-            redirect('personal');
+            flash('msg', 'Income Recorded..');
+             echo "
+              <script type='text/javascript'>
+                window.location = window.location.href;
+              </script>
+              ";
  
         }
         // else{
@@ -122,6 +146,11 @@
       $this->view('personal/add', $data);
       }
     }//Add post function ends..
+
+
+
+
+
 
     // Edit Post post function begins
     public function edit($id){

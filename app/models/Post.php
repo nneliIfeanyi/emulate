@@ -227,7 +227,7 @@
       }
 
 
-       // Get sum of Expense for current week
+    // Get sum of Expense for current week
     public function getCurrentWeekIncome(){
       $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND week = :week AND year = :year;");
       $this->db->bind(':id', $_SESSION['user_id']);
@@ -238,7 +238,32 @@
       $row = $this->db->sumColumn();
 
       return $row;
-      }
+    }
+
+      // Get sum of Expense for current week
+    public function getCurrentMonthIncome(){
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND month = :month AND year = :year;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':type', 'income');
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
+      //Execute
+      $row = $this->db->sumColumn();
+
+      return $row;
+    }
+
+    public function getCurrentMonthExpense(){
+      $this->db->query("SELECT SUM(amount) FROM posts WHERE user_id = :id AND type = :type AND month = :month AND year = :year;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':type', 'expense');
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
+      //Execute
+      $row = $this->db->sumColumn();
+
+      return $row;
+    }
 
 
     // Get Post By ID

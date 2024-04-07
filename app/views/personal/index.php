@@ -8,82 +8,178 @@
     <?php endif;?>
   </div>
   <div class="col-6" style="overflow: hidden;">
-
     <p class="float-end pe-1 mb-3">
       <i class="fa fa-user"></i>&nbsp;
       <?php echo $_SESSION['user_name'];?>
     </p>
   </div>
 </div>
-<div class="row text-center">
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
-          <h1 class="h6">Your Balance:</h1>
-          <p class="font-weight-bold">
-           <?php if(empty($data['expense']) AND empty($data['income'])):?>
-           &#8358;0.00
-           <?php elseif($data['expense'] > $data['income']):?>
-            <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
-           <?php else:?>
-           &#8358;<?= put_coma($data['income'] - $data['expense'])?>.00
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-dark rounded-2">
-          <h1 class="h6 text-muted">Tenth:</h1>
-          <p class="">
-           <?php if(empty($data['income'])):?>
-           &#8358;0.00
-           <?php else:?>
-           &#8358;<?= tithe($data['income']) ?>
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
+<div class="row border-bottom mb-5">
+  <h5>Account Summary | Year <?php echo date('Y') ?><br>
+    <span class="lead text-muted fs-6"> Click <i class="fa fa-info-circle"></i> for more info</span>
+  </h5>
+  <div class="col-md-4"> 
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-primary rounded-2">
+      <h1 class="h6">Balance: 
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Available Cash."></i>
+      </h1>
+      <p class="font-weight-bold">
+       <?php if(empty($data['expense']) AND empty($data['income'])):?>
+       &#8358;0.00
+       <?php elseif($data['expense'] > $data['income']):?>
+        <span class="text-danger"><?= $data['income'] - $data['expense']?></span>
+       <?php else:?>
+       &#8358;<?= put_coma($data['income'] - $data['expense'])?>
+       <?php endif;?>
+      </p>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-          <h1 class="h6 text-muted">Income:</h1>
-          <p class="font-weight-light">
-            <?php if(empty($data['income'])):?>
-            &#8358;0.00
-            <?php else:?>
-            &#8358;<?= put_coma($data['income'])?>.00
-            <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
-          <h1 class="h6 text-muted">Expense:</h1>
-          <p class="">
-           <?php if(empty($data['expense'])):?>
-           &#8358;0.00
-           <?php else:?>
-           &#8358;<?= put_coma($data['expense'])?>.00
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
+  <div class="col-md-4">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+      <h1 class="h6"><span class="text-muted">Income: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Total Income for the year."></i>
+      </h1>
+      <p class="font-weight-light">
+        <?php if(empty($data['income'])):?>
+        &#8358;0.00
+        <?php else:?>
+        &#8358;<?= put_coma($data['income'])?>
+        <?php endif;?>
+      </p>
     </div>
   </div>
-  
+  <div class="col-md-4">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+      <h1 class="h6"><span class="text-muted">Expense: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Total Expense for the year."></i>
+      </h1>
+      <p class="">
+       <?php if(empty($data['expense'])):?>
+       &#8358;0.00
+       <?php else:?>
+       &#8358;<?= put_coma($data['expense'])?>
+       <?php endif;?>
+      </p>
+    </div>
+  </div>
 </div>
+
+<!--Current Month view -->
+
+<div class="row border-bottom mb-5">
+  <h6 class=""><?php echo date('M-Y') ?> |<span class="lead text-muted fs-6"> Current Month</span></h6>
+
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+      <h1 class="h6"><span class="text-muted">Income: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Recorded income for current Month."></i>
+      </h1>
+      <p class="font-weight-light">
+        <?php if(empty($data['month_income'])):?>
+        &#8358;0.00
+        <?php else:?>
+        &#8358;<?= put_coma($data['month_income'])?>
+        <?php endif;?>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+      <h1 class="h6"><span class="text-muted">Expense: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Recorded expense for current Month."></i>
+      </h1>
+      <p class="">
+       <?php if(empty($data['month_expense'])):?>
+       &#8358;0.00
+       <?php else:?>
+       &#8358;<?= put_coma($data['month_expense'])?>
+       <?php endif;?>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Current Week -->
+<div class="row border-bottom mb-5">
+  <h6>This Week |<span class="lead text-muted fs-6"> Week <?= date('W')?>  
+    <i class="fa fa-info-circle" 
+      data-bs-toggle="tooltip" 
+      data-bs-title="New week begins on Monday, Sunday is last day of the week.">
+    </i>
+  </h6>
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+      <h1 class="h6"><span class="text-muted">Income: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Recorded income for current week."></i>
+      </h1>
+      <p class="font-weight-light">
+        <?php if(empty($data['weekIncome'])):?>
+        &#8358;0.00
+        <?php else:?>
+        &#8358;<?= put_coma($data['weekIncome'])?>
+        <?php endif;?>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+      <h1 class="h6"><span class="text-muted">Expense: </span>
+        <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Recorded expense for current week."></i>
+      </h1>
+      <p class="">
+       <?php if(empty($data['weekExpense'])):?>
+       &#8358;0.00
+       <?php else:?>
+       &#8358;<?= put_coma($data['weekExpense'])?>
+       <?php endif;?>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Current Day -->
+
 <div class="row">
-  <div class="col-md-8">
+  <h6>Today |<span class="lead text-muted fs-6"> <?= date('D').','.date('d-M') ?></span></h6>
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
+      <h1 class="h6"><span class="text-muted">Income: </span>
+      </h1>
+      <p class="font-weight-light">
+        <?php if(empty($data['day_income'])):?>
+        &#8358;0.00
+        <?php else:?>
+        &#8358;<?= put_coma($data['day_income'])?>
+        <?php endif;?>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
+      <h1 class="h6"><span class="text-muted">Expense: </span>
+      </h1>
+      <p class="">
+       <?php if(empty($data['day_expense'])):?>
+       &#8358;0.00
+       <?php else:?>
+       &#8358;<?= put_coma($data['day_expense'])?>
+       <?php endif;?>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-10 mx-auto">
     <div class="mt-5">
       <?php if(!empty($data['posts'])):?>
       <table class="table">
         <thead>
           <tr class="border text-center">
-            <th colspan="2"><span class="">Transaction History</span></th>
+            <th colspan="2"><span class="h4">Transaction History</span></th>
           </tr>
         </thead>
         <tbody>
@@ -122,12 +218,20 @@
           </tbody>
       </table>
 
-      <div class="row my-3">
-        <div class="text-center col-lg-6 shadow py-2 rounded-2">
-          <a href="<?php echo URLROOT?>/personal/show"><i class="fa fa-eye text-success"></i> Veiw all transactions</a>
+      <div class="row my-5">
+        <div class="col-md-6">
+          <div class="d-grid mb-3">
+            <a href="<?php echo URLROOT?>/personal/show" class="btn btn-outline-dark">
+              <i class="fa fa-eye text-success"></i> Veiw all transactions
+            </a>
+          </div>
         </div>
-        <div class="text-center col-lg-6 shadow py-2 rounded-2">
-          <a href="<?php echo URLROOT?>/personal/daily"><i class="fa fa-eye text-success"></i> Veiw today's ..</a>
+        <div class="col-md-6">
+          <div class="d-grid ">
+            <a href="<?php echo URLROOT?>/personal/daily" class="btn btn-outline-dark">
+              <i class="fa fa-eye text-success"></i> Veiw today's ..
+            </a>
+          </div>
         </div>
       </div>
         <?php else:?>
@@ -143,35 +247,12 @@
         <?php endif;?>
     </div>
   </div>
-
-  <div class="col-md-4">
-      <div class="card card-body bg-light mt-5 mb-5">
-        <h5 class="mb-3 text-center">Add Transaction</h5>
-        
-        <form action="<?php echo URLROOT; ?>/personal/add" method="post">
-          <div class="form-group mb-2">
-              <label>Select transaction type:</label><span class="text-danger" style="font-size:20px;">*</span>
-              <select class="form-control <?php echo (!empty($data['type_err'])) ? 'is-invalid' : ''; ?>" name="type">
-                <option value="">---</option>
-                <option value="expense">Expenses</option>
-                <option value="income">Income</option>
-              </select>
-              <span class="invalid-feedback"><?php echo $data['type_err']; ?></span>
-          </div>
-          <div class="form-group mb-2">
-              <label>Amount:</label><span class="text-danger" style="font-size:20px;">*</span>
-              <input type="number" name="amount" class="form-control <?php echo (!empty($data['amount_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['amount']; ?>" placeholder="">
-              <span class="invalid-feedback"><?php echo $data['amount_err']; ?></span>
-          </div>
-
-          <div class="form-group mb-3">
-              <label>Caption:</label>
-              <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
-              <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
-          </div>
-          <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Add</button>
-        </form>
-      </div>
-  </div>
 </div>
+  <div style="position: fixed;bottom: 1vh;right: 1vw;">
+    <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
+      <a href="<?php echo URLROOT;?>/personal/add" style="font-size: 22px;">
+        <i class="fa fa-plus-circle fa-3x text-success"></i>
+      </a>
+    </p>
+  </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

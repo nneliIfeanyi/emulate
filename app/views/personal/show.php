@@ -33,15 +33,12 @@
   <div class="row">
     <div class="col-lg-10 mx-auto">
       <?php if(!empty($data['posts'])):?>
-      <table class="table" id="t1">
+      <table id="example"class="display" style="width:100%;">
         <thead>
-          <tr class="border text-center">
-            <th>
-              <div class="float-start"> Amount</div>
-            </th>
-            <th>
-              <div class="float-end">Caption</div>
-            </th>
+          <tr class="border">
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Caption</th>
           </tr>
         </thead>
         <tbody>
@@ -56,21 +53,9 @@
           <tr class="border">
 
             <!-- First Table data -->
-            <td class="col-3" style="position: relative;">
-              <p style="font-size:13px;">
-                  <?php echo $post->amount ?>
-              </p>
-              <p style="font-size:7px;position: absolute;right: 0;top: 0;font-weight: bolder;">    <?php echo $post->day.'-'.$post->d_num ?>
-              </p>
-            </td>
-
-            <!-- Second Table data -->
-            <td class="col-9" class="">
-              <!-- Caption div -->
-              <div class="float-end">
-                <?php echo $post->caption ?>
-              </div>
-            </td><!-- Second Table data Ends -->
+            <td><?php echo $post->amount ?></td>
+            <td><?php echo $post->day.'-'.$post->d_num ?></td>
+            <td><?php echo $post->caption ?></td>
          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           </tbody>
@@ -92,12 +77,32 @@
         Go Back
       </a>
     </div>
-
+    <div style="position: fixed;bottom: 1vh;right: 1vw;">
+      <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
+        <a href="<?php echo URLROOT;?>/personal/add" style="font-size: 22px;">
+          <i class="fa fa-plus-circle fa-3x text-success"></i>
+        </a>
+      </p>
+    </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 
-<script type="text/javascript">
-   new DataTable('#t1', {
-    paging: true,
-    ordering:false
-  });
+<script>
+  new DataTable('#example', {
+    caption:"All Recorded Transactions year <?= date('Y') ?>",
+    ordering:false,
+    info:false,
+    // layout: {
+    //     topStart: {
+    //         buttons: ['copy', 'excel',
+    //           { extend:'pdf',
+    //             messageTop:'All Transactions',
+    //             //messageBottom:'Stanvic Concepts'
+    //           },
+    //           { extend:'print',
+    //             messageTop:'All Transactions',
+    //             //messageBottom:'Stanvic Concepts'
+    //           }]
+    //     }
+    // }
+});
 </script>

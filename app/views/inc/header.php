@@ -7,21 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
+
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
-
   <title><?php echo SITENAME; ?></title>
-  <style type="text/css">
-    .myBtn{
-      padding: 4px 4px;
-      border: none;
-      border-radius: 4%;
-      background: seagreen;
-      color: antiquewhite;
-    }
-  </style>
 </head>
-<body>
+<body style="position: relative;">
   <?php require APPROOT . '/views/inc/navbar.php'; ?>
   <div class="container">
+  
