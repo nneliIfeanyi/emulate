@@ -77,7 +77,7 @@
                 <i class="fa fa-trash text-danger"></i>
               </a>
 
-                      <!--Delete post Modal -->
+              <!--Delete post Modal -->
               <div class="modal fade" id="deleteModal<?= $post->id ?>">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -86,9 +86,9 @@
                       <p class="lead">Do you wish to Continue?</p>
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
                       <form action="<?php echo URLROOT; ?>/personal/delete/<?php echo $post->id; ?>" method="post">
-                        <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
+                        <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
                       </form>
                     </div>
                   </div>

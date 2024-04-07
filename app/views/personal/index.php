@@ -225,11 +225,9 @@
               <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
                 data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
                 <i class="fa fa-pencil text-success"></i>
-              </a>
+              </a>&nbsp;
 
-              <a href="javascript:void();" 
-                data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
-                <i class="fa fa-trash text-danger"></i>
+              <a href="javascript:void();" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>"><i class="fa fa-trash text-danger"></i>
               </a>
 
                       <!--Delete post Modal -->
@@ -323,3 +321,12 @@
   </p>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+<script>
+  new DataTable('#example', {
+    ordering:false,
+    info:false,
+    searching:false,
+    paging:false,
+});
+</script>
