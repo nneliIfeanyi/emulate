@@ -256,7 +256,7 @@
       </table>
       </div>
 
-      <div class="row my-5">
+      <div class="row mt-5">
         <div class="col-md-6">
           <div class="d-grid mb-3">
             <a href="<?php echo URLROOT?>/personal/show" class="btn btn-outline-dark">
