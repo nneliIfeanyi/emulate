@@ -3,11 +3,9 @@
   <div class="col-lg-7 mx-auto">
       <div class="card card-body bg-light my-5">
         <h2>Edit Transaction</h2>
-          <?php if(!empty(flash('msg'))) :?>
-            <p class="font-weight-light">
-            <?php flash('msg');?>
-            </p>
-          <?php endif;?>
+          <div class="flash-msg">
+              <?php flash('msg');?>
+          </div>
         <p data-bs-toggle="tooltip" data-bs-title="Hello there">Change the details of this transaction</p>
         <form action="<?php echo URLROOT; ?>/personal/edit/<?php echo $data['id']; ?>" method="post">
           <div class="form-group mb-3">

@@ -1,20 +1,16 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<div class="flash-msg">
+    <?php flash('msg');?>
+</div>
 <div class="row">
-  <div class="col-6">
-    <?php if(!empty(flash('msg'))) :?>
-      <p class="font-weight-light">
-      <?php flash('msg');?>
-      </p>
-    <?php endif;?>
-  </div>
-  <div class="col-6" style="overflow: hidden;">
+  <div class="col-12" style="overflow: hidden;">
     <p class="float-end pe-1 mb-3">
       <i class="fa fa-user"></i>&nbsp;
-      <?php echo $_SESSION['user_name'];?>
+      <?php echo GREET.' '. $_SESSION['user_name'];?>
     </p>
   </div>
 </div>
-<div class="row border-bottom mb-5">
+<div class="row border-bottom mb-4 pb-2">
   <h5>Account Summary | Year <?php echo date('Y') ?><br>
     <span class="lead text-muted fs-6"> Click <i class="fa fa-info-circle"></i> for more info</span>
   </h5>
@@ -62,11 +58,17 @@
       </p>
     </div>
   </div>
+
+  <a class="text-dark fs-6" 
+    style="text-decoration: none;" href="<?php echo URLROOT?>/personal/show">
+    Go to all transactions 
+    <i class="fa fa-arrow-right"></i>
+  </a>
 </div>
 
 <!--Current Month view -->
 
-<div class="row border-bottom mb-5">
+<div class="row border-bottom mb-4 pb-2">
   <h6 class=""><?php echo date('M-Y') ?> |<span class="lead text-muted fs-6"> Current Month</span></h6>
 
   <div class="col-md-6">
@@ -97,10 +99,15 @@
       </p>
     </div>
   </div>
+  <a class="text-dark fs-6" 
+    style="text-decoration: none;" href="<?php echo URLROOT?>/personal/monthly">
+    Go to current month 
+    <i class="fa fa-arrow-right"></i>
+  </a>
 </div>
 
 <!-- Current Week -->
-<div class="row border-bottom mb-5">
+<div class="row border-bottom mb-4 pb-2">
   <h6>This Week |<span class="lead text-muted fs-6"> Week <?= date('W')?>  
     <i class="fa fa-info-circle" 
       data-bs-toggle="tooltip" 
@@ -135,12 +142,17 @@
       </p>
     </div>
   </div>
+  <a class="text-dark fs-6" 
+    style="text-decoration: none;" href="<?php echo URLROOT?>/personal/current_week">
+    Go to current week 
+    <i class="fa fa-arrow-right"></i>
+  </a>
 </div>
 
 
 <!-- Current Day -->
 
-<div class="row">
+<div class="row pb-2">
   <h6>Today |<span class="lead text-muted fs-6"> <?= date('D').','.date('d-M') ?></span></h6>
   <div class="col-md-6">
     <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
@@ -168,6 +180,11 @@
       </p>
     </div>
   </div>
+  <a class="text-dark fs-6" 
+    style="text-decoration: none;" href="<?php echo URLROOT?>/personal/daily">
+    View today 
+    <i class="fa fa-arrow-right"></i>
+  </a>
 </div>
 
 

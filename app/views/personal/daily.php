@@ -36,10 +36,15 @@
 <!-- Current Day ends -->       
 
       <?php if(!empty($data['posts'])):?>
-      <table class="table">
+      <div class="table-responsive">
+      <table id="example"class="display" style="width:100%;">
         <thead>
           <tr class="border">
-            <th colspan="3" class="text-center"><span class="text-success">Today's Record</span></th>
+            <th>Day</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -51,32 +56,47 @@
             }
 
           ?>
-          <tr class="border row">
+          <tr class="border">
+
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none;"><?php echo $post->amount ?></a></p>
-            </td>
-            <!-- Second Table data -->
-            <td class="col-8" class="">
-              <!-- Caption div -->
-              <div class="float-end">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;">
-                  <?php echo $post->caption ?>
-                </a>
+            <td><?php echo $post->day ?></td>
+            <td><?php echo $post->d_num.','.' '.$post->month ?></td>
+            <td><?php echo $post->caption ?></td>
+            <td><?php echo $post->amount ?></td>
+            <td>
+              <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
+                data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
+                <i class="fa fa-pencil text-success"></i>
+              </a>&nbsp;
+
+              <a href="javascript:void();" 
+                data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
+                <i class="fa fa-trash text-danger"></i>
+              </a>
+
+                      <!--Delete post Modal -->
+              <div class="modal fade" id="deleteModal<?= $post->id ?>">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      This Action cannot be reveresed..
+                      <p class="lead">Do you wish to Continue?</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-around">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+                      <form action="<?php echo URLROOT; ?>/personal/delete/<?php echo $post->id; ?>" method="post">
+                        <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </td><!-- Second Table data Ends -->
-            <td class="col-1">
-               <!-- Delete icon div -->
-              <div class="float-end">
-                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
-                  <button type="submit" style="color: antiquewhite;background: darkred;border: 0;"><span class="fw-bold">&times;</span></button>
-                </form>
-              </div><!-- Delete icon div ends-->
             </td>
          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
-          </tbody>
+        </tbody>
       </table>
+      </div>
       
       <?php else:?>
         <div class="my-3 card card-body">
@@ -105,16 +125,16 @@
       </div>
 
     <div class="card card-body mb-3">
-      <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a previous day</span></h4>
+      <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a recorded previous day</span></h4>
       <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
       <form action="<?php echo URLROOT?>/personal/daily" method="POST">
         <div class="row">
           <div class="col-6 py-2 col-lg-3 form-group">
             <select class="form-control <?php echo (!empty($data['day_err'])) ? 'is-invalid' : ''; ?>" name="date">
-              <option value="">Date</option>
-              <?php foreach($data['date'] as $date):?>
-              <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
-              <?php endforeach;?>
+            <option value="">Date</option>
+            <?php foreach($data['date'] as $date):?>
+                <option value="<?php echo $date->d_num?>"><?php echo $date->d_num?></option>
+            <?php endforeach;?>
             </select>
           </div>
 
@@ -155,3 +175,11 @@
     </p>
   </div>
 <?php require APPROOT . '/views/inc/foot.php'; ?>
+<script>
+  new DataTable('#example', {
+    caption:"All Recorded Transactions year <?= date('Y') ?>",
+    ordering:false,
+    info:false,
+    paging:false,
+});
+</script>

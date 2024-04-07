@@ -15,6 +15,24 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
   <title><?php echo SITENAME2; ?></title>
+  <style type="text/css">
+    .flash-msg{
+      position: fixed;
+      top: 13vh;
+      right: 0;
+      width: 40vw;
+      animation-name: fade;
+      animation-duration: 3s;
+      animation-delay: 6s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fade{
+      from{opacity: 1;}
+      to{opacity: 0;}
+    }
+  </style>
 </head>
 <body style="position: relative;">
   <?php require APPROOT . '/views/inc/navbar.php'; ?>

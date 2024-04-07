@@ -75,6 +75,17 @@
       return $results;
     }
 
+     // Get All Posts for current week //
+    public function getCurrentMonth(){
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
+      $results = $this->db->resultset();
+
+      return $results;
+    }
+
      public function getDistinctDate(){
       $this->db->query("SELECT DISTINCT(d_num) FROM posts WHERE user_id = :id;");
       $this->db->bind(':id', $_SESSION['user_id']);

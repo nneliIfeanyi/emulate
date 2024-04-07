@@ -33,8 +33,8 @@
           </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
           <tr>
-            <th>Total expense</th>
-            <th> -- </th>
+            <th>Total</th>
+            <th>expense</th>
             <th> -- </th>
             <th> -- </th>
             <th>
@@ -46,8 +46,8 @@
             </th>
           </tr>
           <tr>
-           <th>Total income</th>
-            <th> -- </th>
+           <th>Total</th>
+            <th>income</th>
             <th> -- </th>
             <th> -- </th>
             <th>

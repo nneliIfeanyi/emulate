@@ -31,10 +31,15 @@
     </div><!-- Ends Cards row -->
 
       <?php if(!empty($data['posts'])):?>
-      <table class="table">
+      <div class="table-responsive">
+      <table id="example"class="display" style="width:100%;">
         <thead>
-          <tr class="border text-center">
-            <th colspan="2"><span class="text-success">Transaction Records For Current Week<span class="text-dark text-muted"><?php echo date('W'); ?></span></span></th>
+          <tr class="border">
+            <th>Day</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -46,32 +51,47 @@
             }
 
           ?>
-          <tr class="border row">
+          <tr class="border">
+
             <!-- First Table data -->
-            <td class="col-3">
-              <p style="font-size:13px;"><a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none;"><?php echo $post->amount ?></a></p>
-            </td>
-            <!-- Second Table data -->
-            <td class="col-8" class="">
-              <!-- Caption div -->
-              <div class="float-end">
-                <a href="<?php echo URLROOT?>/personal/edit/<?= $post->id?>" style="text-decoration: none; color: black;">
-                  <?php echo $post->caption ?>
-                </a>
+            <td><?php echo $post->day ?></td>
+            <td><?php echo $post->d_num.','.' '.$post->month ?></td>
+            <td><?php echo $post->caption ?></td>
+            <td><?php echo $post->amount ?></td>
+            <td>
+              <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
+                data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
+                <i class="fa fa-pencil text-success"></i>
+              </a>&nbsp;
+
+              <a href="javascript:void();" 
+                data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
+                <i class="fa fa-trash text-danger"></i>
+              </a>
+
+                      <!--Delete post Modal -->
+              <div class="modal fade" id="deleteModal<?= $post->id ?>">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      This Action cannot be reveresed..
+                      <p class="lead">Do you wish to Continue?</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-around">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+                      <form action="<?php echo URLROOT; ?>/personal/delete/<?php echo $post->id; ?>" method="post">
+                        <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </td><!-- Second Table data Ends -->
-            <td class="col-1">
-               <!-- Delete icon div -->
-              <div class="float-end">
-                <form action="<?php echo URLROOT?>/personal/delete/<?= $post->id?>" method="post">
-                  <button type="submit" style="color: antiquewhite;background: darkred;border: 0;"><span class="fw-bold">&times;</span></button>
-                </form>
-              </div><!-- Delete icon div ends-->
             </td>
          </tr><!-- Second Table row ends -->
           <?php endforeach; ?>
-          </tbody>
+        </tbody>
       </table>
+      </div>
       <div class="row my-4">
         <div class="col-md-6 mx-auto">
           <div class="d-grid mx-4">
@@ -103,7 +123,7 @@
             <select class="form-control <?php echo (!empty($data['month_err'])) ? 'is-invalid' : ''; ?>" name="week">
               <option value="<?php echo date('W') ?>">Week <?php echo date('W') ?></option>
               <?php foreach($data['week'] as $week):?>
-              <option value="<?php echo $week->week?>"><?php echo $week->week?></option>
+              <option value="<?php echo $week->week?>"><?php echo 'week'.$week->week?></option>
               <?php endforeach;?>
             </select>
         </div>
@@ -136,3 +156,11 @@
     </p>
   </div>
 <?php require APPROOT . '/views/inc/foot.php'; ?>
+
+<script>
+  new DataTable('#example', {
+    caption:"All Recorded Transactions week <?= date('W') ?>",
+    ordering:false,
+    info:false,
+});
+</script>

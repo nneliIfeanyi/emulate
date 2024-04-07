@@ -50,6 +50,24 @@
       $this->view('pages/download', $data);
     }
 
+    public function download_month(){
+        $posts = $this->postModel->getCurrentMonth();
+        $expense = $this->postModel->getCurrentMonthExpense();
+        $income = $this->postModel->getCurrentMonthIncome();
+
+        // $week = $this->postModel->getDistinctWeek();
+        // $year = $this->postModel->getDistinctYear();
+
+        $data = [
+          'posts' => $posts,
+          'expense' => $expense,
+          'income' => $income,
+          // 'week' => $week,
+          // 'year' => $year
+        ];
+      $this->view('pages/download_month', $data);
+    }
+
 
 
   }

@@ -45,9 +45,13 @@
     // Show All Daily Post Transaction
     public function show(){
       $posts = $this->postModel->getPosts();
+      $expense = $this->postModel->getExpenseTotal_all();
+      $income = $this->postModel->getIncomeTotal_all();
 
       $data = [
-        'posts' => $posts
+        'posts' => $posts,
+        'expense' => $expense,
+        'income' => $income
       ];
 
       $this->view('personal/show', $data);
@@ -180,7 +184,11 @@
       
         $this->postModel->updatePost($data);
         flash('msg','Edit Successfull');
-        redirect('personal');
+         echo "
+              <script>
+                history.go(-2);
+              </script>
+          ";
         
       } else {
         // Get post from model
@@ -217,16 +225,21 @@
     // Delete Post
     public function delete($id){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //$id = $_GET['id'];
         //Execute
         if($this->postModel->deletePost($id)){
-          // Redirect to login
+          
           flash('msg', 'Transaction Removed','alert alert-danger');
-          redirect('personal');
+          echo "
+            <script>
+              history.back();
+            </script>
+          ";
           } else {
             die('Something went wrong');
           }
       } else {
-        redirect('personal');
+         redirect('personal');
       }
     }
 
@@ -273,6 +286,7 @@
       $date = $this->postModel->getDistinctDate();
       $month = $this->postModel->getDistinctMonth();
       $year = $this->postModel->getDistinctYear();
+      $day = $this->postModel->getDistinctDay();
       $posts = $this->postModel->getPostsAll();
       $expense = $this->postModel->getExpense();
       $income = $this->postModel->getIncome();
@@ -281,6 +295,7 @@
         'date' => $date,
         'year' => $year,
         'month' => $month,
+        'day' =>$day,
         'posts' => $posts,
         'expense' => $expense,
         'income' => $income
@@ -345,14 +360,14 @@
 
      // Load current week
     public function monthly(){
-      // $posts = $this->postModel->getCurrentWeek();
-      // $expense = $this->postModel->getCurrentWeekExpense();
-      // $income = $this->postModel->getCurrentWeekIncome();
+      $posts = $this->postModel->getCurrentMonth();
+      $monthExpense = $this->postModel->getCurrentMonthExpense();
+      $monthIncome = $this->postModel->getCurrentMonthIncome();
 
       $data = [
-        // 'posts' => $posts,
-        // 'expense' => $expense,
-        // 'income' => $income
+        'posts' => $posts,
+        'expense' => $monthExpense,
+        'income' => $monthIncome
       ];
       
       $this->view('personal/monthly', $data);
