@@ -2,6 +2,9 @@
 <h1 class="h4 text-center">All Transactions For Today <br>
   <span class="lead text-muted fs-6"> <?= date('D').','.date('d-M') ?></span>
 </h1>
+<div class="flash-msg">
+  <?php echo flash('msg')?>
+</div>
  <!-- Current Day -->
 <div class="row">
     <div class="col-lg-10 mx-auto">
@@ -67,7 +70,7 @@
               <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
                 data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
                 <i class="fa fa-pencil text-success"></i>
-              </a>&nbsp;
+              </a>
 
               <a href="javascript:void();" 
                 data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
@@ -82,7 +85,7 @@
                       This Action cannot be reveresed..
                       <p class="lead">Do you wish to Continue?</p>
                     </div>
-                    <div class="modal-footer d-flex justify-content-around">
+                    <div class="modal-footer d-flex justify-content-between">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
                       <form action="<?php echo URLROOT; ?>/personal/delete/<?php echo $post->id; ?>" method="post">
                         <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
@@ -126,7 +129,6 @@
 
     <div class="card card-body mb-3">
       <h4 class="text-center card-title"><span class="text-success"> Navigate</span> <span class="text-muted"> to a recorded previous day</span></h4>
-      <div class="row"><div class="col-md-6"><?php flash('msg')?></div></div>
       <form action="<?php echo URLROOT?>/personal/daily" method="POST">
         <div class="row">
           <div class="col-6 py-2 col-lg-3 form-group">

@@ -225,7 +225,7 @@
               <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
                 data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
                 <i class="fa fa-pencil text-success"></i>
-              </a>&nbsp;
+              </a>
 
               <a href="javascript:void();" 
                 data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
@@ -240,7 +240,7 @@
                       This Action cannot be reveresed..
                       <p class="lead">Do you wish to Continue?</p>
                     </div>
-                    <div class="modal-footer d-flex justify-content-around">
+                    <div class="modal-footer d-flex justify-content-between">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
                       <form action="<?php echo URLROOT; ?>/personal/delete/<?php echo $post->id; ?>" method="post">
                         <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
