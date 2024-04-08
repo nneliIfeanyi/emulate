@@ -32,6 +32,14 @@
       from{opacity: 1;}
       to{opacity: 0;}
     }
+
+    .card-text{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   </style>
 </head>
 <body style="position: relative;">

@@ -38,4 +38,4 @@
       </a>
     </p>
   </div>
-<?php require APPROOT . '/views/inc/foot.php'; ?>
+<?php require APPROOT . '/views/inc/joe/foot.php'; ?>

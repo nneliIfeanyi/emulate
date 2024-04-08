@@ -10,12 +10,15 @@
           <option value="">Select mood..</option>
           <option value="Prayer">Prayer</option>
           <option value="Failures">Failures</option>
-          <option value="Heart desire">Heart desire</option>
+          <option value="Heart desires">Heart desires</option>
           <option value="Confession">Confession</option>
           <option value="Testimonies">Testimonies</option>
           <option value="Visions">Visions</option>
           <option value="Dreams">Dreams</option>
           <option value="Success story">Success story</option>
+          <option value="Reminders">Reminders</option>
+          <option value="My Plans">My Plans</option>
+          <option value="Depressed">Depressed</option>
         </select>
         <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
     </div>    
@@ -27,4 +30,4 @@
     <input type="submit" class="btn btn-success" value="Submit">
   </form>
 </div>
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php require APPROOT . '/views/inc/joe/footer.php'; ?>

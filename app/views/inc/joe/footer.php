@@ -4,7 +4,7 @@
 <footer class="footer mt-4 text-bg-dark pt-4">
       <div class="container">
         <div class="row">
-        	<div class="col-md-6">
+        	<!-- <div class="col-md-6">
             <h5 class="">Quick Links</h5>
             <ul class="list-unstyled">
               <li><a href="<?php echo URLROOT?>">Home</a></li>
@@ -14,11 +14,15 @@
               <li><a href="<?php echo URLROOT?>/personal/add">Add Transaction</a></li>
               <li><a href="<?php echo URLROOT?>/pages/journal">Journal</a></li>
             </ul>
-          </div>
+          </div> -->
           <div class="col-md-6">
-            <h5 class="">Spending is Quick Earning is Slow</h5>
-             <p class="lead text-primary fs-5">
-              Just remember, no matter how easy it is to spend your money, its not getting any easier to make that money.
+             <!-- <p class="lead text-primary fs-5">
+              "Journal writing gives us insights into who we are, who we were, and who we can become."<br>
+              <span class="text-muted fw-bold fs-6">Anonymous</span>
+            </p> -->
+            <p class="lead text-light fs-5">
+              "Your Journal is like your best friend. You don't have to pretend with it, you can be honest and write exactly how you feel."<br>
+              <span class="text-muted fw-bold fs-6"><a href="#">more qoutes..</a></span>
             </p>
           </div>
           

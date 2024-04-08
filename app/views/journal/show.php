@@ -19,4 +19,4 @@
   <div class="flash-msg">
     <?php echo flash('msg');?>
   </div>
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php require APPROOT . '/views/inc/joe/footer.php'; ?>
