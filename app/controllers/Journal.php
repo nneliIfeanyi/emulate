@@ -35,6 +35,12 @@
 
     // Add Post
     public function add(){
+      $year = date('Y');
+      $month =date('M');
+      $day = date('D');
+      $date = date('jS');
+      $week = date('W');
+      $time = date('h:ia');
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -42,7 +48,12 @@
         $data = [
           'title' => trim($_POST['title']),
           'body' => trim($_POST['body']),
-          'user_id' => $_SESSION['user_id'],   
+          'user_id' => $_SESSION['user_id'], 
+          'week' => $week,
+          'year' => $year,
+          'month' =>$month,
+          'date_' => $day.' '.$date,
+          'created_time' => $time, 
           'title_err' => '',
           'body_err' => ''
         ];
@@ -84,6 +95,12 @@
 
     // Edit Post
     public function edit($id){
+      $year = date('Y');
+      $month =date('M');
+      $day = date('D');
+      $date = date('jS');
+      $week = date('W');
+      $time = date('h:ia');
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -92,7 +109,9 @@
           'id' => $id,
           'title' => trim($_POST['title']),
           'body' => trim($_POST['body']),
-          'user_id' => $_SESSION['user_id'],   
+          'user_id' => $_SESSION['user_id'], 
+          'created_on' => $day.' '.$date.' '.$month.' '.$year, 
+          'edit_time' => $time, 
           'title_err' => '',
           'body_err' => ''
         ];

@@ -24,7 +24,12 @@
       <div class="card card-body mb-3">
         <h4 class="card-title"><?php echo $post->title; ?></h4>
         <div class="bg-light p-2 mb-3">
-          Written <?php echo $post->created_date; ?>
+        <?php if(!empty($post->date_)):?>
+          Written <span class="text-muted"><?php echo $post->date_.' '.$post->month; ?></span>
+          at <span class="text-muted"><?php echo $post->created_time; ?> </span>
+        <?php else:?>
+          Written <span class="text-muted"><?php echo $post->created_date; ?></span>
+        <?php endif;?>
         </div>
         <p class="card-text"><?php echo $post->body; ?></p>
         <a class="btn btn-dark" href="<?php echo URLROOT; ?>/journal/show/<?php echo $post->postId; ?>">More</a>

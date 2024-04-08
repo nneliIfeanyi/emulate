@@ -35,13 +35,18 @@
     // Add Post
     public function addPost($data){
       // Prepare Query
-      $this->db->query('INSERT INTO journal (title, user_id, body) 
-      VALUES (:title, :user_id, :body)');
+      $this->db->query('INSERT INTO journal (title, user_id, body, date_, month, week, year, created_time) 
+      VALUES (:title, :user_id, :body, :date_, :month, :week, :year, :created_time)');
 
       // Bind Values
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':user_id', $data['user_id']);
       $this->db->bind(':body', $data['body']);
+      $this->db->bind(':date_', $data['date_']);
+      $this->db->bind(':month', $data['month']);
+      $this->db->bind(':week', $data['week']);
+      $this->db->bind(':year', $data['year']);
+      $this->db->bind(':created_time', $data['created_time']);
       
       //Execute
       if($this->db->execute()){
@@ -54,12 +59,14 @@
     // Update Post
     public function updatePost($data){
       // Prepare Query
-      $this->db->query('UPDATE journal SET title = :title, body = :body WHERE id = :id');
+      $this->db->query('UPDATE journal SET title = :title, body = :body, created_on = :created_on, edit_time = :edit_time WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':body', $data['body']);
+      $this->db->bind(':created_on', $data['created_on']);
+      $this->db->bind(':edit_time', $data['edit_time']);
       
       //Execute
       if($this->db->execute()){
