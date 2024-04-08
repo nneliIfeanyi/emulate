@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/joe/header.php'; ?>
 <a href="<?php echo URLROOT; ?>/journal" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
 <div class="card card-body bg-light my-5">
   <h2>Add to your Journal</h2>

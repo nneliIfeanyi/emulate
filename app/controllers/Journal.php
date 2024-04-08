@@ -49,7 +49,7 @@
 
          // Validate email
          if(empty($data['title'])){
-          $data['title_err'] = 'Please enter name';
+          $data['title_err'] = 'Please select your mood';
           // Validate name
           if(empty($data['body'])){
             $data['body_err'] = 'Please enter the post body';
@@ -62,7 +62,7 @@
           //Execute
           if($this->joeModel->addPost($data)){
             // Redirect to login
-            flash('post_added', 'Post Added');
+            flash('msg', 'Journal Post Added Successfully');
             redirect('journal');
           } else {
             die('Something went wrong');
@@ -112,8 +112,12 @@
           //Execute
           if($this->joeModel->updatePost($data)){
           // Redirect to login
-          flash('post_message', 'Post Updated');
-          redirect('journal');
+          flash('msg', 'Journal Successfully Updated ');
+          echo "
+              <script>
+                history.go(-2);
+              </script>
+          ";
           } else {
             die('Something went wrong');
           }
@@ -147,8 +151,12 @@
         //Execute
         if($this->joeModel->deletePost($id)){
           // Redirect to login
-          flash('post_message', 'Post Removed');
-          redirect('journal');
+          flash('msg', 'Journal Successfully Removed', 'alert alert-danger');
+          echo "
+              <script>
+                history.go(-2);
+              </script>
+          ";
           } else {
             die('Something went wrong');
           }

@@ -25,7 +25,7 @@
 
     public function journal(){
       if(!isset($_SESSION['user_id'])){
-        redirect('pages');
+        redirect('users/login');
       }
       
       $data = [

@@ -188,7 +188,7 @@
               <script>
                 history.go(-2);
               </script>
-          ";
+        ";
         
       } else {
         // Get post from model

@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php';$post_time = strtotime($data['post']->created_at);?>
+<?php require APPROOT . '/views/inc/joe/header.php';$post_time = strtotime($data['post']->created_date);?>
   <a href="<?php echo URLROOT; ?>/journal" class="btn btn-light mb-3"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
   <br>
   <h1><?php echo $data['post']->title; ?></h1>
@@ -16,4 +16,7 @@
       </form>
     </div>
   <?php endif; ?>
+  <div class="flash-msg">
+    <?php echo flash('msg');?>
+  </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

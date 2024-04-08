@@ -145,7 +145,7 @@
           if($loggedInUser){
             // User Authenticated!
             $this->createUserSession($loggedInUser);
-            flash('msg', 'Welcome!');
+            flash('msg', 'Welcome!'.' '. $loggedInUser->name);
            
           } else {
             $data['password_err'] = 'Password incorrect.';
@@ -179,7 +179,10 @@
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email; 
       $_SESSION['user_name'] = $user->name;
-      redirect('personal');
+      echo "
+        <script>
+          history.go(-2);
+            </script>";
     }
 
     // Logout & Destroy Session

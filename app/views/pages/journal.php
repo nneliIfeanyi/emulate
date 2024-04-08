@@ -42,9 +42,10 @@
 
         <div class="social d-flex gap-3 position-absolute">
           <a href="#">
-            <i class="fab fa-twitter fa-3x text-white"></i>
+            <i class="fa fa-book-open"></i>
+            Why Journal
           </a>
-          <a href="#">
+         <!--  <a href="#">
             <i class="fab fa-instagram fa-3x text-white"></i>
           </a>
           <a href="#">
@@ -55,7 +56,7 @@
           </a>
           <a href="#">
             <i class="fab fa-youtube fa-3x text-white"></i>
-          </a>
+          </a> -->
         </div>
       </div>
     </header>

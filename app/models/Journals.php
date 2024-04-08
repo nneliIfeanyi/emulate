@@ -13,9 +13,9 @@
                         users.id as userId
                         FROM journal 
                         INNER JOIN users 
-                        ON journal.user_id = users.id
-                        ORDER BY journal.created_at DESC;");
-
+                        ON journal.user_id = users.id WHERE user_id = :id
+                        ORDER BY journal.created_date DESC;");
+      $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
 
       return $results;
