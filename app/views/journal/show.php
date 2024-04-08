@@ -1,9 +1,9 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/header.php';$post_time = strtotime($data['post']->created_at);?>
   <a href="<?php echo URLROOT; ?>/journal" class="btn btn-light mb-3"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
   <br>
   <h1><?php echo $data['post']->title; ?></h1>
   <div class="bg-secondary text-white p-2 mb-3">
-    Written by <?php echo $data['user']->name; ?> on <?php echo $data['post']->created_at; ?>
+    Written by <?php echo $data['user']->name; ?> <?php echo to_time_ago($post_time); ?>
   </div>
   <p><?php echo $data['post']->body; ?></p>
   <?php if($data['post']->user_id == $_SESSION['user_id']) : ?>

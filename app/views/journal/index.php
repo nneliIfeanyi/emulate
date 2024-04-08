@@ -20,13 +20,12 @@
       </div>
     </div>
     <?php foreach($data['posts'] as $post) : 
-      $date = strtotime($post->created_at);
-      $day = date('d/m/Y', $date)
+      $post_time = strtotime($post->created_at);
     ?>
       <div class="card card-body mb-3">
         <h4 class="card-title"><?php echo $post->title; ?></h4>
         <div class="bg-light p-2 mb-3">
-          Written on <?php echo $day ; ?>
+          Written <?php echo to_time_ago($post_time); ?>
         </div>
         <p class="card-text"><?php echo $post->body; ?></p>
         <a class="btn btn-dark" href="<?php echo URLROOT; ?>/journal/show/<?php echo $post->postId; ?>">More</a>
