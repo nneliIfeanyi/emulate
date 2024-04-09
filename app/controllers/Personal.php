@@ -11,6 +11,10 @@
       // Load Models
       $this->postModel = $this->model('Post');
       $this->userModel = $this->model('User');
+
+      if(date('H:i:s') == '00:00:00' ){
+       $this->postModel->deleteEmpty();
+      }
     }
 
     // Load All Posts
@@ -57,19 +61,14 @@
       $this->view('personal/show', $data);
     }
 
+
     // Add Post
     public function add(){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // $posts = $this->postModel->getCurrentWeek_7();
-        // $expense = $this->postModel->getCurrentWeekExpense();
-        // $income = $this->postModel->getCurrentWeekIncome();
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         $data = [
-          // 'posts' => $posts,
-          // 'expense' => $expense,
-          // 'income' => $income,
           'amount' => trim($_POST['amount']),
           'caption' => trim($_POST['caption']),
           'user_id' => $_SESSION['user_id'],
@@ -373,6 +372,74 @@
       $this->view('personal/monthly', $data);
     }
 
+    // Show All Daily Post Transaction
+    public function add_bulk(){ 
+      
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $type = $_POST['type'];
+        $amount = $_POST['amount'];
+        $caption = $_POST['caption'];
+        foreach($type as $index=>$details ){
+            $data = [
+              'type' => $type[$index],
+              'amount' => $amount[$index],
+              'caption' => $caption[$index],
+              'user_id' => $_SESSION['user_id'],
+              'year' => date('Y'),
+              'month' => date('M'),
+              'day' => date('D'),
+              'd_num' => date('jS'),
+              'week' => date('W'),
+            ];
+         $this->postModel->addPost($data);
+          flash('msg', 'Transactions Recorded..');
+           echo "
+            <script type='text/javascript'>
+              window.location = window.location.href;
+            </script>
+            ";
+        }
+      }else{
 
-    
-  }
+        $posts = $this->postModel->getPostsAll();
+        $added_rows = $this->postModel->get_added_rows();
+
+        $data = [
+          'posts' => $posts,
+          'added_rows' => $added_rows,
+        ];
+
+      }
+
+      $this->view('personal/add_bulk', $data);
+    }
+
+// Add mor function begins
+    //for bulk add update
+    public function add_more(){ 
+      
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $type = $_POST['type'];
+        $amount = $_POST['amount'];
+        $caption = $_POST['caption'];
+        $id = $_POST['id'];
+        foreach($type as $index=>$details ){
+            $data = [
+              'type' => $type[$index],
+              'amount' => $amount[$index],
+              'caption' => $caption[$index],
+              'id' => $id[$index],
+              'd_num' => date('jS'),
+              'week' => date('W'),
+            ]; 
+         $this->postModel->addMore($data);
+          flash('msg', 'Transactions Recorded..');
+          redirect('personal/add_bulk');
+        }// end forech loop
+      }//end server request
+   
+  }//end Add more function
+
+
+
+}

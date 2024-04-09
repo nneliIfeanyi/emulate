@@ -49,7 +49,16 @@
 
 
 
-
+    public function get_added_rows(){
+      $this->db->query("SELECT * FROM posts WHERE user_id = :id AND d_num = :day AND month = :month AND year = :year ORDER BY posts.created_at DESC;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':day', date('jS'));
+      $this->db->bind(':month', date('M'));
+      $this->db->bind(':year', date('Y'));
+      $this->db->resultset();
+      $rows = $this->db->rowCount();
+      return $rows;
+    }
     
 
      // Get All Posts for current day
@@ -336,6 +345,26 @@
         return false;
       }
     }
+    // Update Post
+    public function addMore($data){
+      // Prepare Query
+      $this->db->query("UPDATE posts SET amount = :amount, caption = :caption, type = :type WHERE id = :id ");
+
+      // Bind Values
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':amount', $data['amount']);
+      $this->db->bind(':caption', $data['caption']);
+      $this->db->bind(':type', $data['type']);
+      // $this->db->bind(':d_num', $data['date']);
+      // $this->db->bind(':week', $data['week']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
 
     // Delete Post
     public function deletePost($id){
@@ -352,4 +381,21 @@
         return false;
       }
     }
+
+
+    public function deleteEmpty(){
+      // Prepare Query
+      $this->db->query("DELETE FROM posts WHERE caption = '' AND type = '' AND amount = '' ");
+
+      // Bind Values
+      //$this->db->bind(':id', $id);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   }

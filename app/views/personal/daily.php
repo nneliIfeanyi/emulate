@@ -54,7 +54,7 @@
           <?php foreach($data['posts'] as $post) : 
               if ($post->type == 'expense') {
               $post->amount = "<span class='text-danger font-weight-bold'>"."-".put_coma($post->amount)."</span>";
-            }else{
+            }elseif ($post->type == 'income'){
               $post->amount = "<span class='text-success font-weight-bold'>"."+".put_coma($post->amount)."</span>";
             }
 
@@ -67,15 +67,15 @@
             <td><?php echo $post->caption ?></td>
             <td><?php echo $post->amount ?></td>
             <td>
-              <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
-                data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
-                <i class="fa fa-pencil text-success"></i>
-              </a>
-
-              <a href="javascript:void();" 
-                data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
-                <i class="fa fa-trash text-danger"></i>
-              </a>
+              <div class="d-flex">
+                <a href="<?php echo URLROOT;?>/personal/edit/<?= $post->id?>" data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
+                  <i class="fa fa-pencil text-success"></i>
+                </a>&nbsp;&nbsp;
+                <a href="javascript:void();" 
+                  data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </div>
 
               <!--Delete post Modal -->
               <div class="modal fade" id="deleteModal<?= $post->id ?>">

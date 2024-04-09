@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <div class="row">
-    <div class="col-md-6 mx-auto">
+    <div class="col-md-9 mx-auto">
       <div class="card card-body bg-light mt-5">
         <h5 class="mb-3">Add Transaction</h5>
         <div class="flash-msg"><?php flash('msg');?></div>
@@ -26,8 +26,9 @@
               <textarea name="caption" class="form-control <?php echo (!empty($data['caption_err'])) ? 'is-invalid' : ''; ?>" placeholder="eg.. airtime recharge"><?php echo $data['caption']; ?></textarea>
               <span class="invalid-feedback"><?php echo $data['caption_err']; ?></span>
           </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Add</button>
+          <div class="d-flex flex-column flex-md-row justify-content-between">
+            <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Record</button>
+            <a href="<?php echo URLROOT?>/personal/add_bulk" class="btn">Add bulk records <i class="fa fa-angle-right"></i></a>
             <a href="<?php echo URLROOT?>/personal/daily" class="btn btn-outline-dark"><i class="fa fa-eye"></i> View Today</a>
           </div>
           
