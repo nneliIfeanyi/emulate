@@ -247,7 +247,7 @@
   <!-- ///////////
       ============
                   -->
-<!-- <p>You added</p> -->
+<p class="h3">Add More Transaction</p>
 <form action="<?php echo URLROOT; ?>/personal/add_more" method="post">
   <div style="overflow-x: scroll;">
 <table class="table table-striped border w-100">
