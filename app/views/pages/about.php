@@ -12,4 +12,4 @@
         <img src="<?php echo URLROOT?>/images/keepers2.jpeg" class="card-img">
     </div>
   </div>
-<?php require APPROOT . '/views/inc/foot.php'; ?>
+<?php require APPROOT . '/views/inc/footer.php'; ?>
