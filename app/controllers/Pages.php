@@ -23,15 +23,12 @@
       $this->view('pages/index', $data);
     }
 
-    public function journal(){
-      if(!isset($_SESSION['user_id'])){
-        redirect('users/login');
-      }
+    public function about(){
       
       $data = [
 
       ];
-      $this->view('pages/journal', $data);
+      $this->view('pages/about', $data);
     }
 
 

@@ -10,7 +10,7 @@
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/journal"><i class="fa fa-pencil"></i> Journal</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><i class="fa fa-info-circle"></i> About</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
