@@ -3,11 +3,13 @@
   <?php echo flash('msg')?>
 </div>
 <?php if (empty($data['posts'])): ?>
+  <p class="h3">Add Bulk Transaction</p>
+<p class="fs-6 tex-muted">You can add multiple transactions at once..</p>
   <form action="<?php echo URLROOT; ?>/personal/add_bulk" method="post">
     <div class="table-responsive">
-<table class="table table-striped border">
+<table class="table table-striped border w-100">
   <thead>
-    <tr class="border text-center">
+    <tr class="border text-center text-muted">
       <td>#</td>
       <th>Transaction Type</th>
       <!-- <th>Category</th> -->
@@ -247,12 +249,16 @@
   <!-- ///////////
       ============
                   -->
+<div class="flash-msg">
+  <?php echo flash('msg')?>
+</div>
 <p class="h3">Add More Transaction</p>
+<p class="fs-6 tex-muted">Click on added transaction to edit..</p>
 <form action="<?php echo URLROOT; ?>/personal/add_more" method="post">
   <div style="overflow-x: scroll;">
-<table class="table table-striped border w-100">
+<table class="table table-striped border">
   <thead>
-    <tr class="border text-center">
+    <tr class="text-muted">
       <th>Transaction type</th>
       <th>Transaction Amount</th>
       <th>Transaction Description</th>
@@ -275,7 +281,7 @@
         <input type="number" name="amount[]" class="form-control" value="<?= $added->amount;?>">
       </td>
       <td>
-        <input name="caption[]" class="form-control" type="text" value="<?= $added->caption;?>">
+        <input name="caption[]" class="form-control w-100" type="text" value="<?= $added->caption;?>">
         </textarea>
       </td>
     </tr>
@@ -296,16 +302,3 @@
 </form>
 <?php endif ?>
 <?php require APPROOT . '/views/inc/foot.php'; ?>
-<!-- <script>
-  new DataTable('#example', {
-    ordering:false,
-    info:false,
-    paging:false,
-    searching:false,
-});
-</script> -->
-
-<!--<?php // elseif($data['added_rows'] == 12) :
-  // flash('msg', 'You have used up available space for recording multiple transaction at a time.');
-  // redirect('personal/add');
-?>-->
