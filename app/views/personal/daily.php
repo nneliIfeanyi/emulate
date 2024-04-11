@@ -179,9 +179,8 @@
 <?php require APPROOT . '/views/inc/foot.php'; ?>
 <script>
   new DataTable('#example', {
-    caption:"All Recorded Transactions year <?= date('Y') ?>",
     ordering:false,
-    info:false,
+    info:true,
     paging:false,
 });
 </script>

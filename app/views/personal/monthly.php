@@ -97,10 +97,7 @@
       <div class="row my-4">
         <div class="col-md-6 mx-auto">
           <div class="d-grid mx-4">
-            <a href="<?php echo URLROOT;?>/pages/download" class="btn btn-outline-dark">Download options</a>
-            <!-- <form action="<?php echo URLROOT;?>/pages/download">
-              <input type="submit" name="download" value="Download options" class="btn btn-outline-primary">
-            </form> -->
+            <a href="<?php echo URLROOT;?>/pages/download_month" class="btn btn-outline-dark">Download options</a>
           </div>
         </div>
       </div>

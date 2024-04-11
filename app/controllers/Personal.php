@@ -11,10 +11,6 @@
       // Load Models
       $this->postModel = $this->model('Post');
       $this->userModel = $this->model('User');
-
-      if(date('H:i:s') == '00:00:00' ){
-       $this->postModel->deleteEmpty();
-      }
     }
 
     // Load All Posts
@@ -85,8 +81,6 @@
 
          // Validate 
         if(empty($data['type'])){
-            // $data['type_err'] = 'Please select transaction type';
-            // $this->view('personal/index', $data);
           flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
@@ -94,9 +88,7 @@
           </script>
           ";
         }elseif(empty($data['amount'])){
-            // $data['amount_err'] = 'Please enter amount';
-            // $this->view('personal/index', $data);
-            flash('msg', 'All fields are required..', 'alert alert-danger');
+          flash('msg', 'All fields are required..', 'alert alert-danger');
           echo "
           <script type='text/javascript'>
             window.location = window.location.href;
@@ -120,28 +112,18 @@
         }else {
             $this->postModel->addPost($data);
             flash('msg', 'Income Recorded..');
-             echo "
+            echo "
               <script type='text/javascript'>
                 window.location = window.location.href;
               </script>
               ";
  
         }
-        // else{
-        //     die('Something went wrong');  
-        // }
-        
 
       }//Post request method ends..
        else {
-        // $posts = $this->postModel->getCurrentWeek_7();
-        // $expense = $this->postModel->getCurrentWeekExpense();
-        // $income = $this->postModel->getCurrentWeekIncome();
 
         $data = [
-          // 'posts' => $posts,
-          // 'expense' => $expense,
-          // 'income' => $income,
           'amount' => '',
           'caption' => ''
         ];
@@ -393,11 +375,9 @@
             ];
          $this->postModel->addPost($data);
           flash('msg', 'Transactions Recorded..');
-           echo "
-            <script type='text/javascript'>
-              window.location = window.location.href;
-            </script>
-            ";
+          redirect('personal/daily');
+
+          $this->postModel->deleteEmpty();
         }
       }else{
 

@@ -96,7 +96,7 @@
     }
 
      public function getDistinctDate(){
-      $this->db->query("SELECT DISTINCT(d_num) FROM posts WHERE user_id = :id;");
+      $this->db->query("SELECT DISTINCT(d_num) FROM posts WHERE user_id = :id ORDER BY d_num ASC;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
       return $results;

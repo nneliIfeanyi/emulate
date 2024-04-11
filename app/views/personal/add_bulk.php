@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
+<p class="h3">Add Bulk Transaction</p>
+<p class="fs-6 tex-muted">You can add multiple transactions at once..</p>
 <div class="flash-msg">
   <?php echo flash('msg')?>
 </div>
-<?php if (empty($data['posts'])): ?>
-  <p class="h3">Add Bulk Transaction</p>
-<p class="fs-6 tex-muted">You can add multiple transactions at once..</p>
   <form action="<?php echo URLROOT; ?>/personal/add_bulk" method="post">
     <div class="table-responsive">
 <table class="table table-striped border w-100">
@@ -238,18 +238,19 @@
 </table>
 </div>
 <button type="submit" class="btn btn-success mt-2">Add Multiple Transactions</button>
+<div class="col-md-6 float-end">
+  <a href="<?php echo URLROOT?>/personal/add" class="btn">Add Single <i class="fa fa-angle-right"></i></a>
+</div>
 </form>
 
 <!-- ///////////
       ============
                   -->
 
-<?php elseif($data['added_rows'] <= 12) :?>
-
   <!-- ///////////
       ============
                   -->
-<div class="flash-msg">
+<!-- <div class="flash-msg">
   <?php echo flash('msg')?>
 </div>
 <p class="h3">Add More Transaction</p>
@@ -299,6 +300,5 @@
   </div>
 </div>
 
-</form>
-<?php endif ?>
+</form> -->
 <?php require APPROOT . '/views/inc/foot.php'; ?>

@@ -59,16 +59,17 @@
             <td><?php echo $post->caption ?></td>
             <td><?php echo $post->amount ?></td>
             <td>
+              <div class="d-flex">
               <a href="<?php echo URLROOT;?>/personal/edit/<?php echo $post->id?>" 
                 data-bs-toggle="tooltip" data-bs-title="Edit this transaction">
                 <i class="fa fa-pencil text-success"></i>
-              </a>
+              </a>&nbsp;&nbsp;
 
               <a href="javascript:void();" 
                 data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->id ?>">
                 <i class="fa fa-trash text-danger"></i>
               </a>
-
+            </div>
                       <!--Delete post Modal -->
               <div class="modal fade" id="deleteModal<?= $post->id ?>">
                 <div class="modal-dialog" role="document">

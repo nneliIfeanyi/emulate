@@ -66,7 +66,7 @@
 
 	<script>
   new DataTable('#example', {
-    caption:"Recorded Transactions For The Current Week <?= date('W') ?>.",
+    caption:"Recorded Transactions For The Current Month <?= date('M') ?>.",
     paging:false,
     ordering:false,
     info:false,
@@ -75,11 +75,11 @@
         topStart: {
             buttons: ['copy', 'excel',
               { extend:'pdf',
-                messageTop:'Recorded Transactions For The Current Week <?= date('W') ?>.',
+                messageTop:'Recorded Transactions For The Current Month <?= date('M') ?>.',
                 //messageBottom:'null'
               },
               { extend:'print',
-                messageTop:'Recorded Transactions For The Current Week <?= date('W') ?>.',
+                messageTop:'Recorded Transactions For The Current Month <?= date('M') ?>.',
                 //messageBottom:'Stanvic Concepts'
               }]
         }
